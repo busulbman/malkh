@@ -70,7 +70,21 @@ public enum ExternalToolSetup {
         let stage=root.appendingPathComponent(".office-\(UUID().uuidString)",isDirectory:true)
         try fm.createDirectory(at:stage,withIntermediateDirectories:false);defer { try? fm.removeItem(at:stage) }
         let image=stage.appendingPathComponent("LibreOffice.dmg")
-        try await CheckedToolDownload.fetch(URL(string:"https://download.documentfoundation.org/libreoffice/stable/26.8.1/mac/aarch64/LibreOffice_26.8.1_MacOS_aarch64.dmg")!,to:image,maximum:400*1024*1024) { progress($0.map{$0*0.8},"Downloading LibreOffice 26.8.1…") }
+        // Once a newer LibreOffice ships, 26.8.1 leaves the "stable" folder and moves to the permanent archive
+        // under its full build number. Try each location in turn; the SHA-256 below still pins the exact file.
+        let officeSources=["https://download.documentfoundation.org/libreoffice/stable/26.8.1/mac/aarch64/LibreOffice_26.8.1_MacOS_aarch64.dmg"]
+            + (1...4).map { "https://downloadarchive.documentfoundation.org/libreoffice/old/26.8.1.\($0)/mac/aarch64/LibreOffice_26.8.1.\($0)_MacOS_aarch64.dmg" }
+        var lastError:Error?
+        for source in officeSources {
+            try token.check();try Task.checkCancellation()
+            try? fm.removeItem(at:image)
+            do {
+                try await CheckedToolDownload.fetch(URL(string:source)!,to:image,maximum:400*1024*1024) { progress($0.map{$0*0.8},"Downloading LibreOffice 26.8.1…") }
+                lastError=nil;break
+            } catch is CancellationError { throw CancellationError() }
+            catch { lastError=error }
+        }
+        if let lastError { throw lastError }
         try verify(image,digest:"ca074e0b13571efb30a31fc531c5f95e997030637325e5d5de92d67aefdf0dfc")
         try token.check();try Task.checkCancellation();progress(nil,"Verifying and preparing office tools…")
         let mount=stage.appendingPathComponent("mount",isDirectory:true);try fm.createDirectory(at:mount,withIntermediateDirectories:false)
