@@ -3,9 +3,11 @@
 <p align="center">Ваши файлы — в новом свете. · Dosyaların, yeni bir ışıkta.</p>
 
 <p align="center">
-  <a href="https://github.com/busulbman/malkh/releases/latest/download/Malkh-macOS-arm64.zip"><b>⬇︎ Mac için indir</b></a>
+  <a href="https://github.com/busulbman/malkh/releases/latest/download/Malkh-macOS-arm64.zip"><b>⬇︎ Скачать для Mac · Mac için indir</b></a>
   · Apple Silicon (M1/M2/M3/M4) · macOS 13+
 </p>
+
+> 🇷🇺 **[Как установить Malkh — пошаговая инструкция на русском](КАК_УСТАНОВИТЬ.md)**
 
 Malkh; görsel, video, ses, PDF ve ofis dosyalarını dönüştürmek ve düzenlemek için hızlı, sade bir Mac uygulaması. Finder'da dosyayı sürüklerken bir tuşa bas, açılan çarktan ne yapmak istediğini seç.
 
