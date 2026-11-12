@@ -1,0 +1,5 @@
+{
+  "files.exclude": { "**/.build": true },
+  "search.exclude": { "**/.build": true },
+  "editor.formatOnSave": false
+}

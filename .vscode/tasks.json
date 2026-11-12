@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "swift: Build Debug Malkh",
+      "type": "shell",
+      "command": "swift build --product Malkh",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": "$swiftc"
+    }
+  ]
+}
