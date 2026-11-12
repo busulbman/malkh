@@ -43,7 +43,7 @@ final class UpdateCredentialBrokerTests: XCTestCase {
     }
     func testBrokerConfigurationRequiresExactServiceCertificateAndFrozenHashes() throws {
         let configuration = try brokerConfiguration()
-        XCTAssertEqual(configuration.requirement, "identifier \"com.nurali.malkh.credentials.v1\" and certificate leaf = H\"\(String(repeating: "a", count: 40))\"")
+        XCTAssertEqual(configuration.requirement, "identifier \"com.busulbman.malkh.credentials.v1\" and certificate leaf = H\"\(String(repeating: "a", count: 40))\"")
         for key in brokerInfo().keys {
             var missing = brokerInfo(); missing.removeValue(forKey: key)
             XCTAssertThrowsError(try UpdateCredentialBrokerConfiguration(appURL: URL(fileURLWithPath: "/synthetic"), info: missing))
@@ -53,7 +53,7 @@ final class UpdateCredentialBrokerTests: XCTestCase {
     }
 
     func testMalkhStoreUsesTheExistingAccountForReadWriteAndRemove() async throws {
-        let config=try brokerConfiguration(),connection=SyntheticBrokerTransport(expectedRepository:"nurali/malkh")
+        let config=try brokerConfiguration(),connection=SyntheticBrokerTransport(expectedRepository:"busulbman/malkh")
         let client=UpdateCredentialBrokerClient(configuration:{config},validate:{_ in},connect:{_ in connection})
         let store=BrokerUpdateCredentialStore(client:client)
         let token=try await store.loadToken(for:UpdateBrandMigration.current)

@@ -4,8 +4,8 @@ import os, re, sys, plistlib
 from pathlib import Path
 root=Path(sys.argv[1]).resolve()
 info=plistlib.loads((root/'Contents/Info.plist').read_bytes())
-assert info.get('MalkhPublicUpdateRepository')=='nurali/malkh'
-assert info.get('SUFeedURL')=='https://github.com/nurali/malkh/releases/latest/download/appcast.xml'
+assert info.get('MalkhPublicUpdateRepository')=='busulbman/malkh'
+assert info.get('SUFeedURL')=='https://github.com/busulbman/malkh/releases/latest/download/appcast.xml'
 assert info.get('MalkhExternalTools') is True
 assert not (root/'Contents/XPCServices').exists(), 'Public archive must not include a private credential broker'
 assert not (root/'Contents/Resources/Tools/ffmpeg').exists(), 'Upstream media tools use direct first-use acquisition'

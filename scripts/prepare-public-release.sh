@@ -13,10 +13,10 @@ if [[ -e "$archive" ]]; then print -u2 'This release archive already exists. Kee
 scripts/build-app.sh release
 python3 scripts/audit-release.py "$MALKH_APP_OUTPUT"
 python3 scripts/archive-app.py "$MALKH_APP_OUTPUT" "$archive"
-key_options=(--account "${MALKH_UPDATE_KEY_ACCOUNT:-com.nurali.malkh}")
+key_options=(--account "${MALKH_UPDATE_KEY_ACCOUNT:-com.busulbman.malkh}")
 if [[ -n "${MALKH_UPDATE_KEY_FILE:-}" ]]; then key_options=(--ed-key-file "$MALKH_UPDATE_KEY_FILE"); fi
 sparkle="$PWD/.build/artifacts/sparkle/Sparkle/bin"
-prefix="https://github.com/nurali/malkh/releases/download/v$1-$2/"
+prefix="https://github.com/busulbman/malkh/releases/download/v$1-$2/"
 "$sparkle/generate_appcast" "${key_options[@]}" --download-url-prefix "$prefix" "$feed_directory"
 "$sparkle/sign_update" "${key_options[@]}" --verify "$feed_directory/appcast.xml"
 python3 scripts/validate-update-feed.py "$feed_directory/appcast.xml" "$2"

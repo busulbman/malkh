@@ -30,7 +30,7 @@ if [[ -d "$binary_dir/Malkh_MalkhCore.bundle" ]]; then ditto "$binary_dir/Malkh_
 python3 scripts/configure-updates.py "$application/Contents/Info.plist" "${MALKH_UPDATE_CONFIG:-Configuration/Updates.plist}"
 if [[ "$malkh_signing_mode" != ad-hoc && "$malkh_public_build" == false ]]; then
   python3 scripts/build-credential-broker.py --app "$application"
-elif [[ -e "$application/Contents/XPCServices/com.nurali.malkh.credentials.v1.xpc" ]]; then
+elif [[ -e "$application/Contents/XPCServices/com.busulbman.malkh.credentials.v1.xpc" ]]; then
   print -u2 "Use a separate output directory for an ad-hoc build; this output contains a frozen signed credential broker."
   exit 1
 fi

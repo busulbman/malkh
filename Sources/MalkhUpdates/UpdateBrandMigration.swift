@@ -3,8 +3,8 @@ import Foundation
 /// Names displayed to the user are current. The existing Keychain account and
 /// signed, frozen helper remain stable so a rebrand never asks for the PAT again.
 enum UpdateBrandMigration {
-    static let previous=try! GitHubRepository("nurali/malkh")
-    static let current=try! GitHubRepository("nurali/malkh")
+    static let previous=try! GitHubRepository("busulbman/malkh")
+    static let current=try! GitHubRepository("busulbman/malkh")
     static func canonical(_ repository:GitHubRepository)->GitHubRepository { repository==previous ? current:repository }
     static func credentialAccount(_ repository:GitHubRepository)->GitHubRepository { repository==current ? previous:repository }
     static func acceptsArchive(owner:String,name:String,for repository:GitHubRepository)->Bool {

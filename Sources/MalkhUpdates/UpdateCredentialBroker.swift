@@ -15,7 +15,7 @@ enum UpdateCredentialBrokerError: Error, LocalizedError, Equatable {
 }
 
 struct UpdateCredentialBrokerConfiguration: Equatable, Sendable {
-    static let service = "com.nurali.malkh.credentials.v1"
+    static let service = "com.busulbman.malkh.credentials.v1"
     let appURL: URL
     let certificateSHA1: String
     let binarySHA256: String

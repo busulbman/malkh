@@ -35,7 +35,7 @@ struct CredentialBrokerRepository: Equatable {
 enum CredentialBrokerQuery {
     // Preserve the existing service and per-repository account, so adopting the
     // helper does not move, replace, or delete a previously saved credential.
-    static let service = "com.nurali.malkh.github-updates"
+    static let service = "com.busulbman.malkh.github-updates"
 
     static func make(repository: CredentialBrokerRepository, allowInteraction: Bool = false) -> [String: Any] {
         let context = LAContext()
@@ -61,7 +61,7 @@ final class CredentialBroker: NSObject, UpdateCredentialBrokerProtocol {
     // The legacy interaction switch is process-global. Every instance shares
     // this queue, so an explicit authorization cannot enable UI for another
     // read, write, or deletion. No operation changes an ACL or partition list.
-    private static let queue = DispatchQueue(label: "com.nurali.malkh.credentials.keychain")
+    private static let queue = DispatchQueue(label: "com.busulbman.malkh.credentials.keychain")
 
     private func error(_ status: OSStatus) -> NSError {
         NSError(domain: NSOSStatusErrorDomain, code: Int(status), userInfo: [

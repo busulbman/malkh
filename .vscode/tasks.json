@@ -5,8 +5,31 @@
       "label": "swift: Build Debug Malkh",
       "type": "shell",
       "command": "swift build --product Malkh",
-      "group": { "kind": "build", "isDefault": true },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
       "problemMatcher": "$swiftc"
+    },
+    {
+      "label": "Malkh: Yayın paketi oluştur",
+      "type": "shell",
+      "command": "scripts/make-release.sh ${input:version} ${input:build}",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "version",
+      "type": "promptString",
+      "description": "Sürüm (örn. 1.0.0)",
+      "default": "1.0.0"
+    },
+    {
+      "id": "build",
+      "type": "promptString",
+      "description": "Yapı numarası (her yayında +1)",
+      "default": "1"
     }
   ]
 }

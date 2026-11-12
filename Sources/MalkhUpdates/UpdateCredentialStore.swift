@@ -50,7 +50,7 @@ public final class KeychainUpdateCredentialStore: UpdateCredentialStore, @unchec
     private static let interactionLock = NSLock()
     private let service: String
 
-    public init(service: String = "com.nurali.malkh.github-updates") {
+    public init(service: String = "com.busulbman.malkh.github-updates") {
         self.service = service
     }
 
