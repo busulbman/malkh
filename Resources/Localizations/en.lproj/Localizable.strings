@@ -564,6 +564,7 @@
 "CREATE PDF" = "CREATE PDF";
 "CREATE VISUALIZATION" = "CREATE VISUALIZATION";
 "CREATED" = "CREATED";
+"CREATED BY" = "CREATED BY";
 "CROP" = "CROP";
 "CROP AREA" = "CROP AREA";
 "CROP COORDINATES MUST BE FINITE." = "CROP COORDINATES MUST BE FINITE.";
@@ -794,6 +795,7 @@
 "Create a new Float" = "Create a new Float";
 "Create visualization" = "Create visualization";
 "Created" = "Created";
+"Created by" = "Created by";
 "Crop" = "Crop";
 "Crop Image" = "Crop Image";
 "Crop Image · Malkh" = "Crop Image · Malkh";

@@ -1,6 +1,6 @@
 <p align="center"><img src="Resources/Brand/MalkhIcon.png" width="128" alt="Malkh"></p>
 <h1 align="center">Malkh</h1>
-<p align="center">Dosyaların, yeni bir ışıkta. · Your files, in a new light.</p>
+<p align="center">Ваши файлы — в новом свете. · Dosyaların, yeni bir ışıkta.</p>
 
 <p align="center">
   <a href="https://github.com/busulbman/malkh/releases/latest/download/Malkh-macOS-arm64.zip"><b>⬇︎ Mac için indir</b></a>
@@ -14,7 +14,7 @@ Malkh; görsel, video, ses, PDF ve ofis dosyalarını dönüştürmek ve düzenl
 - **Taşı ve paylaş** — Control: kopyala, taşı, AirDrop, yüzen raf (Float)
 - **Bağlantıdan indir** — Control+Shift+D ile kopyalanan herkese açık video, ses ve görseller
 - **Gizlilik** — tüm işlemler senin Mac'inde yapılır; hesap, analiz veya bulut yok
-- **Diller** — Türkçe, English, Français, Русский
+- **Diller** — Русский, Türkçe, English
 
 ## Kurulum
 
@@ -23,13 +23,13 @@ Malkh; görsel, video, ses, PDF ve ofis dosyalarını dönüştürmek ve düzenl
 3. Malkh'ı aç. macOS ilk açılışta *"Malkh açılamıyor / geliştirici doğrulanamadı"* uyarısı verirse:
    - **Sistem Ayarları → Gizlilik ve Güvenlik**'e git, en altta **Yine de Aç**'a bas ve onayla.
    - Ya da Terminal'de bir kez çalıştır: `xattr -dr com.apple.quarantine /Applications/Malkh.app`
-4. İlk açılışta **Eksik araçları indir**'e bas. Medya araçları (FFmpeg, yt-dlp) ve ofis araçları (LibreOffice) resmi kaynaklarından indirilir ve doğrulanır. Görsel ve PDF özellikleri hemen çalışır.
+4. İlk açılışta **Eksik araçları indir**'e bas. Medya araçları (FFmpeg, yt-dlp) resmi kaynaklarından indirilip doğrulanır. Görsel ve PDF özellikleri hemen çalışır.
 
 Bu uyarı, uygulama henüz Apple tarafından noter onaylı (notarized) olmadığı için çıkar; yalnızca ilk açılışta bir kez gerekir. Yeni sürümler uygulama içinden güncellenir.
 
 ## Installation (English)
 
-Download **Malkh-macOS-arm64.zip** from the link above, unzip it and move **Malkh.app** to Applications. On first launch, if macOS blocks it, open **System Settings → Privacy & Security** and click **Open Anyway** (or run `xattr -dr com.apple.quarantine /Applications/Malkh.app`). Then choose **Download missing tools** to enable media and Office conversions.
+Download **Malkh-macOS-arm64.zip** from the link above, unzip it and move **Malkh.app** to Applications. On first launch, if macOS blocks it, open **System Settings → Privacy & Security** and click **Open Anyway** (or run `xattr -dr com.apple.quarantine /Applications/Malkh.app`). Then choose **Download missing tools** to enable media conversions.
 
 ## Geliştirme
 
@@ -43,4 +43,4 @@ scripts/make-release.sh 1.0.0 1      # yayın paketi oluştur ve GitHub'a yükle
 
 ## Lisans
 
-MIT — ayrıntılar için [LICENSE](LICENSE). Üçüncü taraf bileşenlerin lisansları `Resources/licenses` ve `Resources/THIRD-PARTY-NOTICES.txt` içinde.
+Geliştiren: **NurAli Khutiev** · MIT — ayrıntılar için [LICENSE](LICENSE). Üçüncü taraf bileşenlerin lisansları `Resources/licenses` ve `Resources/THIRD-PARTY-NOTICES.txt` içinde.

@@ -11,7 +11,7 @@ import ApplicationServices
 @main
 enum MalkhApplication {
     @MainActor static func main() {
-        UserDefaults.standard.register(defaults:["appLanguage":AppLocalization.systemLanguage])
+        UserDefaults.standard.register(defaults:["appLanguage":"ru"])
         if CommandLine.arguments.count>1,["convert","tool","inspect","catalog","dependencies"].contains(CommandLine.arguments[1]) { exit(MalkhCommandLine.run()) }
         let app=NSApplication.shared
         if CommandLine.arguments.contains("--ui-audit") {

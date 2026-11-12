@@ -196,7 +196,7 @@ struct UIAuditError:LocalizedError { let message:String;init(_ message:String){s
             if let value=language.accessibilityValue() as? String {values["languagePicker"]=value}
             else if let title=language.accessibilityTitle(){values["languagePicker"]=title}
         }
-        if let control=views.compactMap({$0 as? NSPopUpButton}).first(where:{["English","Türkçe","Français","Русский"].contains($0.titleOfSelectedItem ?? "")}),let selected=control.titleOfSelectedItem {
+        if let control=views.compactMap({$0 as? NSPopUpButton}).first(where:{["English","Türkçe","Русский"].contains($0.titleOfSelectedItem ?? "")}),let selected=control.titleOfSelectedItem {
             values["languagePicker"]=selected
         }
         if values["languagePicker"]==nil {
@@ -235,7 +235,7 @@ struct UIAuditError:LocalizedError { let message:String;init(_ message:String){s
             if scene=="settings.general" {
                 values.merge(renderedSelections(view),uniquingKeysWith:{$1})
                 if values["appearancePicker"] != appearance {issues.append("rendered appearance picker="+(values["appearancePicker"] ?? "unavailable"))}
-                if values["languagePicker"] != (["tr":"Türkçe","fr":"Français","ru":"Русский"][language] ?? "English") {issues.append("rendered language picker="+(values["languagePicker"] ?? "unavailable"))}
+                if values["languagePicker"] != (["tr":"Türkçe","ru":"Русский"][language] ?? "English") {issues.append("rendered language picker="+(values["languagePicker"] ?? "unavailable"))}
             }
             if issues.isEmpty {return values}
             try await Task.sleep(nanoseconds:40_000_000)

@@ -564,6 +564,7 @@
 "CREATE PDF" = "PDF OLUŞTUR";
 "CREATE VISUALIZATION" = "GÖRSELLEŞTİRME OLUŞTUR";
 "CREATED" = "OLUŞTURULMA";
+"CREATED BY" = "GELİŞTİREN";
 "CROP" = "KIRP";
 "CROP AREA" = "KIRPMA ALANI";
 "CROP COORDINATES MUST BE FINITE." = "KIRPMA KOORDİNATLARI SONLU SAYILAR OLMALI.";
@@ -794,6 +795,7 @@
 "Create a new Float" = "Yeni yüzen pencere oluştur";
 "Create visualization" = "Görselleştirme oluştur";
 "Created" = "Oluşturulma";
+"Created by" = "Geliştiren";
 "Crop" = "Kırp";
 "Crop Image" = "Görseli Kırp";
 "Crop Image · Malkh" = "Görseli Kırp · Malkh";

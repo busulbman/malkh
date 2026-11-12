@@ -16,8 +16,8 @@ public struct ToolSetupStatus: Equatable, Sendable {
         mediaReady = ["ffmpeg", "ffprobe", "yt-dlp", "deno"].allSatisfy { resolve($0) != nil }
         officeReady = resolve("soffice") != nil
     }
-    public var ready: Bool { mediaReady && officeReady }
-    public var missing: [ToolGroup] { ToolGroup.allCases.filter { $0 == .media ? !mediaReady : !officeReady } }
+    public var ready: Bool { mediaReady }
+    public var missing: [ToolGroup] { mediaReady ? [] : [.media] }
 }
 
 /// Replace an incomplete installation only after the new directory is complete.

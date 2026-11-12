@@ -564,6 +564,7 @@
 "CREATE PDF" = "СОЗДАТЬ PDF";
 "CREATE VISUALIZATION" = "СОЗДАТЬ ВИЗУАЛИЗАЦИЮ";
 "CREATED" = "СОЗДАНО";
+"CREATED BY" = "РАЗРАБОТЧИК";
 "CROP" = "ОБРЕЗАТЬ";
 "CROP AREA" = "ОБЛАСТЬ ОБРЕЗКИ";
 "CROP COORDINATES MUST BE FINITE." = "КООРДИНАТЫ ОБРЕЗКИ ДОЛЖНЫ БЫТЬ КОНЕЧНЫМИ.";
@@ -794,6 +795,7 @@
 "Create a new Float" = "Создать новый Float";
 "Create visualization" = "Создать визуализацию";
 "Created" = "Создано";
+"Created by" = "Разработчик";
 "Crop" = "Обрезать";
 "Crop Image" = "Обрезать изображение";
 "Crop Image · Malkh" = "Обрезать изображение · Malkh";

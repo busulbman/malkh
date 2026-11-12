@@ -88,7 +88,7 @@ struct SettingsView:View {
             MalkhPageHeading(eyebrow:"General",title:"Your kind of flow.",subtitle:"A few small preferences. A smoother everyday.").padding(.bottom,4)
             GroupBox {
                 VStack(spacing:16) {
-                    HStack { Text("Language");Spacer();Picker("Language",selection:$appLanguage) { Text(verbatim:"English").tag("en");Text(verbatim:"Türkçe").tag("tr");Text(verbatim:"Français").tag("fr");Text(verbatim:"Русский").tag("ru") }.labelsHidden().frame(width:230).accessibilityIdentifier("AppLanguage") }
+                    HStack { Text("Language");Spacer();Picker("Language",selection:$appLanguage) { Text(verbatim:"English").tag("en");Text(verbatim:"Türkçe").tag("tr");Text(verbatim:"Русский").tag("ru") }.labelsHidden().frame(width:230).accessibilityIdentifier("AppLanguage") }
                     HStack { Text("Appearance");Spacer();Picker("Appearance",selection:$appAppearance) { Text("System").tag("system");Text("Light").tag("light");Text("Dark").tag("dark") }.labelsHidden().pickerStyle(.segmented).frame(width:230) }
                     HStack { Text("Wheel finish");Spacer();Picker("Wheel finish",selection:$fanTheme) { Text("Glass").tag("glass");Text("Solid").tag("metallic") }.labelsHidden().pickerStyle(.segmented).frame(width:230) }
                     Divider()
@@ -301,6 +301,7 @@ private struct AboutSettingsView:View {
             Text("Version \(version)").foregroundStyle(.secondary)
             Text("A little less file fuss. A little more flow.\nConvert, edit, and organize — right on your Mac.").multilineTextAlignment(.center).foregroundStyle(.secondary)
             Text("Built for your files. Made for your Mac.").font(.caption).foregroundStyle(.secondary)
+            VStack(spacing:2) { Text("Created by").font(.caption).foregroundStyle(.secondary);Text(verbatim:"NurAli Khutiev").font(.headline) }.padding(.top,6)
             Spacer()
         }.padding(30).frame(maxWidth:.infinity)
     }

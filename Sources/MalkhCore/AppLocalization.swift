@@ -2,7 +2,7 @@ import Foundation
 
 /// UI copy only. File names, document contents, identifiers and export parameters stay verbatim.
 public enum AppLocalization {
-    public static let supportedLanguages = ["en", "tr", "fr", "ru"]
+    public static let supportedLanguages = ["en", "tr", "ru"]
     public static func normalizedLanguage(_ value: String?) -> String { supportedLanguages.contains(value ?? "") ? value! : "en" }
     /// The first of the Mac's preferred languages that Malkh supports, used until the user picks one in Settings.
     public static var systemLanguage: String {
@@ -26,13 +26,11 @@ public enum AppLocalization {
         return values
     }
     public static let turkish: [String: String] = loadCatalog("Turkish")
-    public static let french: [String: String] = loadCatalog("French")
     public static let russian: [String: String] = loadCatalog("Russian")
     /// Source-to-translation table for a non-English language; empty for English.
     public static func catalog(for language: String) -> [String: String] {
         switch normalizedLanguage(language) {
         case "tr": return turkish
-        case "fr": return french
         case "ru": return russian
         default: return [:]
         }
@@ -49,7 +47,6 @@ public enum AppLocalization {
         let latin = Locale(identifier:"en_US_POSIX")
         switch normalizedLanguage(language) {
         case "tr": break
-        case "fr": return value.uppercased(with:Locale(identifier:"fr_FR"))
         case "ru": return value.uppercased(with:Locale(identifier:"ru_RU"))
         default: return value.uppercased(with:latin)
         }
