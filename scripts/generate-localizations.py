@@ -5,7 +5,7 @@ check="--check" in sys.argv
 root=pathlib.Path(__file__).resolve().parents[1]
 resources=root/'Sources/MalkhCore/Resources'
 # Translated catalogs, one per non-English language: language code -> catalog file.
-catalogs={'tr':'Turkish.json','fr':'French.json'}
+catalogs={'tr':'Turkish.json','fr':'French.json','ru':'Russian.json'}
 # Turkish upper case (i→İ, ı→I), except product and key names, which keep Latin capitals (SHIFT, not SHİFT).
 latin=set(json.loads((resources/'LatinWords.json').read_text(encoding='utf-8')))
 def turkish_upper(value):return re.sub(r'[^\W\d_]+',lambda m:m.group().upper() if m.group() in latin else m.group().replace('i','İ').replace('ı','I').upper(),value)
@@ -55,5 +55,5 @@ for language in ['en',*catalogs]:
  if check:
   if not path.exists() or path.read_text(encoding='utf-8')!=expected:raise SystemExit(f'Stale generated localization table: {path.relative_to(root)}')
  else:path.write_text(expected,encoding='utf-8')
-names={'en':'English','tr':'Turkish','fr':'French'}
+names={'en':'English','tr':'Turkish','fr':'French','ru':'Russian'}
 print(f"Generated {'/'.join(names.get(language,language) for language in ['en',*catalogs])} native tables: {len(english)} keys")
