@@ -10,8 +10,8 @@ import AppKit
         for happy in [false,true] { let mark=bitmap(256,256) { rect in MalkhArtwork.draw(in:rect,happy:happy) };try mark.representation(using:.png,properties:[:])!.write(to:output.appendingPathComponent(happy ? "MalkhMarkHappy.png":"MalkhMark.png")) }
         let icon=bitmap(1024,1024) { _ in
             let background=NSBezierPath(roundedRect:NSRect(x:48,y:48,width:928,height:928),xRadius:205,yRadius:205)
-            NSGradient(starting:NSColor(srgbRed:0.19,green:0.29,blue:0.21,alpha:1),ending:NSColor(srgbRed:0.07,green:0.15,blue:0.10,alpha:1))!.draw(in:background,angle:-90)
-            MalkhArtwork.draw(in:NSRect(x:125,y:90,width:774,height:824),happy:true)
+            NSGradient(starting:MalkhArtwork.lightGreen,ending:MalkhArtwork.green)!.draw(in:background,angle:-90)
+            MalkhArtwork.drawSign(in:NSRect(x:132,y:132,width:760,height:760),color:.white,lineWidth:0.075)
         }
         let png=icon.representation(using:.png,properties:[:])!;try png.write(to:output.appendingPathComponent("MalkhIcon.png"))
         let iconset=output.appendingPathComponent("MalkhIcon.iconset");try FileManager.default.createDirectory(at:iconset,withIntermediateDirectories:true)
@@ -21,11 +21,11 @@ import AppKit
             try rep.representation(using:.png,properties:[:])!.write(to:iconset.appendingPathComponent("icon_\(size)x\(size)\(factor==2 ? "@2x":"").png"))
         } }
         let banner=bitmap(1280,640) { rect in
-            NSColor(srgbRed:0.976,green:0.965,blue:0.930,alpha:1).setFill();rect.fill()
+            NSColor.white.setFill();rect.fill()
             MalkhArtwork.draw(in:NSRect(x:75,y:115,width:390,height:410),happy:true)
             let font=NSFont.systemFont(ofSize:118,weight:.bold);let rounded=NSFont(descriptor:font.fontDescriptor.withDesign(.rounded)!,size:118)!
-            ("Malkh" as NSString).draw(at:NSPoint(x:515,y:315),withAttributes:[.font:rounded,.foregroundColor:NSColor(srgbRed:0.17,green:0.27,blue:0.19,alpha:1)])
-            ("Your files, a little sweeter." as NSString).draw(at:NSPoint(x:523,y:265),withAttributes:[.font:NSFont.systemFont(ofSize:32,weight:.medium),.foregroundColor:NSColor(srgbRed:0.30,green:0.40,blue:0.29,alpha:1)])
+            ("Malkh" as NSString).draw(at:NSPoint(x:515,y:315),withAttributes:[.font:rounded,.foregroundColor:MalkhArtwork.ink])
+            ("Your files, in a new light." as NSString).draw(at:NSPoint(x:523,y:265),withAttributes:[.font:NSFont.systemFont(ofSize:32,weight:.medium),.foregroundColor:MalkhArtwork.green])
             ("Convert. Edit. Organize. Download." as NSString).draw(at:NSPoint(x:523,y:208),withAttributes:[.font:NSFont.systemFont(ofSize:23),.foregroundColor:NSColor(srgbRed:0.43,green:0.47,blue:0.39,alpha:1)])
         }
         try banner.representation(using:.png,properties:[:])!.write(to:output.appendingPathComponent("MalkhSocial.png"))

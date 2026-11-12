@@ -9,6 +9,46 @@
       "args": [],
       "cwd": "${workspaceFolder}",
       "preLaunchTask": "swift: Build Debug Malkh"
+    },
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:malkh}",
+      "name": "Debug Malkh",
+      "target": "Malkh",
+      "configuration": "debug",
+      "preLaunchTask": "swift: Build Debug Malkh"
+    },
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:malkh}",
+      "name": "Release Malkh",
+      "target": "Malkh",
+      "configuration": "release",
+      "preLaunchTask": "swift: Build Release Malkh"
+    },
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:malkh}",
+      "name": "Debug malkh-cli",
+      "target": "malkh-cli",
+      "configuration": "debug",
+      "preLaunchTask": "swift: Build Debug malkh-cli"
+    },
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:malkh}",
+      "name": "Release malkh-cli",
+      "target": "malkh-cli",
+      "configuration": "release",
+      "preLaunchTask": "swift: Build Release malkh-cli"
     }
   ]
 }
