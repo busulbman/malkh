@@ -4,7 +4,7 @@
     {
       "label": "swift: Build Debug Malkh",
       "type": "shell",
-      "command": "swift build --product Malkh",
+      "command": "swift build --product Malkh && python3 scripts/generate-localizations.py >/dev/null && ditto Resources/Localizations \"$(swift build --show-bin-path)\"",
       "group": {
         "kind": "build",
         "isDefault": true
@@ -12,10 +12,14 @@
       "problemMatcher": "$swiftc"
     },
     {
-      "label": "Malkh: Yayın paketi oluştur",
+      "label": "Malkh: GitHub'a gönder ve yayınla",
       "type": "shell",
-      "command": "scripts/make-release.sh ${input:version} ${input:build}",
-      "problemMatcher": []
+      "command": "scripts/publish.sh ${input:version} ${input:build}",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "focus": true
+      }
     }
   ],
   "inputs": [
