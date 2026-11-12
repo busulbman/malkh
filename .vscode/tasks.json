@@ -20,6 +20,16 @@
         "reveal": "always",
         "focus": true
       }
+    },
+    {
+      "label": "Malkh: İlk yayın (1.0.0)",
+      "type": "shell",
+      "command": "scripts/publish.sh 1.0.0 1",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "focus": true
+      }
     }
   ],
   "inputs": [
