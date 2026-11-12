@@ -9,10 +9,11 @@ malkh_public_build=false
 if [[ -f "$malkh_selected_update_config" ]] && plutil -type PublicRepository "$malkh_selected_update_config" >/dev/null 2>&1; then malkh_public_build=true; fi
 if [[ "$malkh_signing_mode" != ad-hoc && "$malkh_public_build" == false ]]; then python3 scripts/build-credential-broker.py; fi
 # Release binaries do not embed the builder's home-directory/source paths.
-swift build -c "$configuration" --product Malkh -Xswiftc -file-prefix-map -Xswiftc "$PWD=/malkh" -Xswiftc -file-compilation-dir -Xswiftc /malkh
-binary_dir=$(swift build -c "$configuration" --show-bin-path)
+scratch=${MALKH_SCRATCH_PATH:-"$PWD/.build"}
+swift build --scratch-path "$scratch" -c "$configuration" --product Malkh -Xswiftc -file-prefix-map -Xswiftc "$PWD=/malkh" -Xswiftc -file-compilation-dir -Xswiftc /malkh
+binary_dir=$(swift build --scratch-path "$scratch" -c "$configuration" --show-bin-path)
 application=${MALKH_APP_OUTPUT:-"$PWD/build/Malkh.app"}
-sparkle_root="$PWD/.build/artifacts/sparkle/Sparkle"
+sparkle_root="$scratch/artifacts/sparkle/Sparkle"
 sparkle_framework="$sparkle_root/Sparkle.xcframework/macos-arm64_x86_64/Sparkle.framework"
 if [[ ! -d "$sparkle_framework" ]]; then print -u2 "Missing Sparkle framework; run swift package resolve"; exit 1; fi
 if [[ -f "$application/Contents/Info.plist" ]]; then

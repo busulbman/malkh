@@ -40,7 +40,8 @@ PLIST
 fi
 
 print "▸ 3/5  Uygulama derleniyor ve paketleniyor ($version, yapı $build)…"
-MALKH_UPDATE_KEY_ACCOUNT=$account scripts/prepare-public-release.sh "$version" "$build"
+# Kullanıcı adı içermeyen bir derleme klasörü: uygulama dosyasına ev klasörü yolu yazılmasın.
+MALKH_SCRATCH_PATH=/tmp/malkh-release-build MALKH_UPDATE_KEY_ACCOUNT=$account scripts/prepare-public-release.sh "$version" "$build"
 upload="$PWD/build/public-upload-$version-$build"
 
 print "▸ 4/5  Paket hazır: $upload/Malkh-macOS-arm64.zip"
