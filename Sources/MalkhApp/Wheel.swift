@@ -141,7 +141,7 @@ final class WheelView:NSView {
             else if selected==i,let gradient=NSGradient(starting:MalkhPalette.gold,ending:NSColor(MalkhPalette.goldEnd)) { gradient.draw(in:path,angle:80) }
             else { NSColor.controlBackgroundColor.withAlphaComponent(0.88).setFill();path.fill() }
             NSColor.gray.withAlphaComponent(0.24).setStroke();path.lineWidth=0.7;path.stroke()
-            let foreground=selected==i ? MalkhPalette.ink:solid ? NSColor.white:NSColor.labelColor
+            let foreground=selected==i ? NSColor.white:solid ? NSColor.white:NSColor.labelColor
             let scale=min(bounds.width,bounds.height)/320
             let source=item.symbol.flatMap { NSImage(systemSymbolName:$0,accessibilityDescription:item.title) }
             let baseFont=NSFont.systemFont(ofSize:(source == nil ? 13:9.5)*scale,weight:.semibold)

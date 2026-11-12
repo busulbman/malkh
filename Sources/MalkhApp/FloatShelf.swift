@@ -410,7 +410,7 @@ private final class ShelfPanel:NSPanel {
     override func layout() { super.layout();tint.frame=bounds }
     private func updateTint() {
         let dark=effectiveAppearance.bestMatch(from:[.darkAqua,.aqua]) == .darkAqua
-        tint.colors=dark ? [NSColor(srgbRed:0.23,green:0.25,blue:0.18,alpha:0.75).cgColor,NSColor(srgbRed:0.10,green:0.16,blue:0.12,alpha:0.8).cgColor]:[NSColor(srgbRed:0.98,green:0.89,blue:0.71,alpha:0.72).cgColor,NSColor(srgbRed:0.85,green:0.91,blue:0.79,alpha:0.72).cgColor]
+        tint.colors=dark ? [NSColor(srgbRed:0.12,green:0.16,blue:0.13,alpha:0.75).cgColor,NSColor(srgbRed:0.07,green:0.12,blue:0.09,alpha:0.8).cgColor]:[NSColor(srgbRed:0.96,green:0.98,blue:0.97,alpha:0.72).cgColor,NSColor(srgbRed:0.88,green:0.95,blue:0.90,alpha:0.72).cgColor]
         tint.startPoint=CGPoint(x:0.5,y:1);tint.endPoint=CGPoint(x:0.5,y:0)
     }
 }

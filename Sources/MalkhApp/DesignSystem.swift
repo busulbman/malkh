@@ -9,18 +9,20 @@ enum MalkhPalette {
             return NSColor(srgbRed:rgb.0,green:rgb.1,blue:rgb.2,alpha:1)
         }
     }
-    static let canvas=Color(nsColor:adaptive((0.976,0.965,0.930),(0.065,0.100,0.079)))
-    static let surface=Color(nsColor:adaptive((1,0.993,0.967),(0.110,0.155,0.122)))
-    static let inset=Color(nsColor:adaptive((0.945,0.930,0.880),(0.082,0.121,0.094)))
-    static let forest=Color(nsColor:adaptive((0.19,0.33,0.23),(0.70,0.82,0.62)))
-    static let sand=Color(nsColor:adaptive((0.965,0.906,0.746),(0.235,0.205,0.130)))
-    static let sage=Color(nsColor:adaptive((0.877,0.921,0.824),(0.140,0.221,0.156)))
-    static let border=Color.primary.opacity(0.075)
+    // Malkh paleti: İnguş bayrağından yeşil + beyaz, kırmızı yalnızca vurgu/hata için.
+    static let canvas=Color(nsColor:adaptive((0.961,0.973,0.965),(0.071,0.078,0.075)))
+    static let surface=Color(nsColor:adaptive((1,1,1),(0.114,0.122,0.118)))
+    static let inset=Color(nsColor:adaptive((0.933,0.949,0.937),(0.090,0.098,0.094)))
+    static let forest=Color(nsColor:adaptive((0.086,0.400,0.220),(0.553,0.851,0.651)))
+    static let sand=Color(nsColor:adaptive((0.910,0.961,0.925),(0.098,0.200,0.137)))
+    static let sage=Color(nsColor:adaptive((0.878,0.945,0.898),(0.110,0.212,0.149)))
+    static let border=Color.primary.opacity(0.08)
     static let gold=MalkhArtwork.gold
     static let ink=MalkhArtwork.ink
-    static let goldInk=Color(nsColor:adaptive((0.44,0.31,0.09),(0.91,0.77,0.46)))
-    static let buttonInk=Color(red:0.17,green:0.21,blue:0.11)
-    static let goldEnd=Color(red:0.96,green:0.82,blue:0.49)
+    static let goldInk=Color(nsColor:adaptive((0.078,0.420,0.224),(0.553,0.878,0.659)))
+    static let buttonInk=Color.white
+    static let alert=Color(nsColor:adaptive((0.839,0.157,0.157),(1.0,0.420,0.420)))
+    static let goldEnd=Color(nsColor:adaptive((0.196,0.651,0.396),(0.333,0.780,0.510)))
 }
 extension Color { static let malkh=Color(nsColor:MalkhPalette.gold) }
 

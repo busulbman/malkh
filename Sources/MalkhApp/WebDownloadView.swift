@@ -172,7 +172,7 @@ struct WebDownloadView:View {
                         VStack(alignment:.leading,spacing:9) { HStack { LText(state.progressLabel).font(.caption);Spacer();if state.progressIsDeterminate { Text(Int(state.progress*100),format:.percent).font(.caption.monospacedDigit()) } };JobProgressBar(state:state) }
                     }
                     if !model.completed.isEmpty { Label("Ready on your Mac",systemImage:"checkmark.circle.fill").foregroundStyle(MalkhPalette.forest);Text(model.completed.map(\.lastPathComponent).joined(separator:"\n")).font(.caption).textSelection(.enabled) }
-                    if let error=model.error { Label { LText(error) } icon:{ Image(systemName:"exclamationmark.circle") }.font(.callout).foregroundStyle(.orange).fixedSize(horizontal:false,vertical:true) }
+                    if let error=model.error { Label { LText(error) } icon:{ Image(systemName:"exclamationmark.circle") }.font(.callout).foregroundStyle(MalkhPalette.alert).fixedSize(horizontal:false,vertical:true) }
                     if let details=model.errorDetails {
                         DisclosureGroup {
                             VStack(alignment:.leading,spacing:8) {

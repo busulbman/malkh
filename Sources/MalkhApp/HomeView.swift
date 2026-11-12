@@ -94,7 +94,7 @@ struct HomeView:View {
                     Text("Your Library").font(.system(size:30,weight:.bold,design:.rounded))
                     Text("Freshly made, pasted, and ready for another round.").font(.callout).foregroundStyle(.secondary)
                     TextField("Find a file or tool · ⌘F",text:$state.libraryQuery).textFieldStyle(.roundedBorder).focused($librarySearchFocused)
-                    if let error=state.error {HStack{Label { LText(error) } icon:{ Image(systemName:"exclamationmark.circle") }.font(.caption).foregroundStyle(.orange);Spacer();Button("Dismiss"){state.error=nil}.buttonStyle(MalkhButtonStyle(.quiet,compact:true))}}
+                    if let error=state.error {HStack{Label { LText(error) } icon:{ Image(systemName:"exclamationmark.circle") }.font(.caption).foregroundStyle(MalkhPalette.alert);Spacer();Button("Dismiss"){state.error=nil}.buttonStyle(MalkhButtonStyle(.quiet,compact:true))}}
                     if state.filteredHistory.isEmpty {LText(state.history.isEmpty ? "Nothing here yet. Paste something or make your first fresh copy.":"No matches. Try a file name or tool.").foregroundStyle(.secondary).padding(20)}
                     ForEach(state.filteredHistory) {job in
                         RecentFileRow(job:job,canReuse:!state.working,onPreview:{state.preview(job)},onReuse:{urls in guard !state.working else{return};state.inputs=urls;state.libraryVisible=false})
@@ -306,10 +306,10 @@ struct JobProgressView:View {
             }
             if let error=state.error {
                 HStack(alignment:.top,spacing:10) {
-                    Image(systemName:"exclamationmark.circle.fill").foregroundStyle(.orange)
+                    Image(systemName:"exclamationmark.circle.fill").foregroundStyle(MalkhPalette.alert)
                     VStack(alignment:.leading,spacing:4) { Text("Let’s try that again.").font(.system(size:12,weight:.semibold,design:.rounded));LText(error).font(.system(size:11)).foregroundStyle(.secondary).lineLimit(4).textSelection(.enabled) }
                     Spacer();Button { state.error=nil } label:{Image(systemName:"xmark")}.buttonStyle(MalkhButtonStyle(.quiet,compact:true)).accessibilityLabel("Dismiss error")
-                }.padding(15).background(Color.orange.opacity(0.07)).background(MalkhPalette.canvas).clipShape(RoundedRectangle(cornerRadius:17)).transition(.opacity)
+                }.padding(15).background(MalkhPalette.alert.opacity(0.07)).background(MalkhPalette.canvas).clipShape(RoundedRectangle(cornerRadius:17)).transition(.opacity)
             }
         }.malkhAnimation(value:state.working).malkhAnimation(value:state.outputs.count).malkhAnimation(value:state.error != nil)
     }

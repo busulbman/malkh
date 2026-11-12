@@ -3,8 +3,8 @@ import AppKit
 /// Shared vector artwork: the app, menu bar, installer icon and brand exports
 /// all draw the same round Asian pear, stem and leaf.
 enum MalkhArtwork {
-    static let gold=NSColor(srgbRed:0.89,green:0.72,blue:0.35,alpha:1)
-    static let ink=NSColor(srgbRed:0.20,green:0.25,blue:0.14,alpha:1)
+    static let gold=MalkhPalette.adaptive((0.118,0.557,0.306),(0.247,0.718,0.443))
+    static let ink=NSColor(srgbRed:0.059,green:0.231,blue:0.129,alpha:1)
     static func bodyPath()->CGPath {
         let p=CGMutablePath();p.move(to:CGPoint(x:0.50,y:0.235))
         p.addCurve(to:CGPoint(x:0.865,y:0.36),control1:CGPoint(x:0.60,y:0.17),control2:CGPoint(x:0.79,y:0.23))
@@ -26,7 +26,7 @@ enum MalkhArtwork {
             c.setFillColor(NSColor.black.cgColor);c.addPath(bodyPath());c.fillPath();c.addPath(leafPath());c.fillPath()
         } else {
             c.saveGState();c.addPath(bodyPath());c.clip()
-            let colors=[NSColor(srgbRed:0.98,green:0.86,blue:0.58,alpha:1).cgColor,gold.cgColor] as CFArray
+            let colors=[NSColor(srgbRed:0.55,green:0.80,blue:0.62,alpha:1).cgColor,gold.cgColor] as CFArray
             let gradient=CGGradient(colorsSpace:CGColorSpace(name:CGColorSpace.sRGB),colors:colors,locations:[0,1])!
             c.drawLinearGradient(gradient,start:CGPoint(x:0.2,y:0.25),end:CGPoint(x:0.85,y:0.95),options:[.drawsBeforeStartLocation,.drawsAfterEndLocation]);c.restoreGState()
             c.setFillColor(NSColor(srgbRed:0.49,green:0.62,blue:0.36,alpha:1).cgColor);c.addPath(leafPath());c.fillPath()

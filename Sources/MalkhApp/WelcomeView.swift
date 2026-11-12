@@ -63,13 +63,13 @@ struct WelcomeView:View {
             Text("Pick a folder you work in. Fresh copies are saved beside the originals by default.").font(.system(size:13)).foregroundStyle(.secondary)
             Button(action:chooseFolder) { Label(folderAllowed ? "Folder access ready":"Choose a folder",systemImage:folderAllowed ? "checkmark":"folder.badge.plus") }.buttonStyle(MalkhButtonStyle())
             Text("Optional. You can change this in Settings.").font(.system(size:11)).foregroundStyle(.secondary)
-            if let folderError { Text(folderError).font(.caption).foregroundStyle(.orange).lineLimit(2) }
+            if let folderError { Text(folderError).font(.caption).foregroundStyle(MalkhPalette.alert).lineLimit(2) }
         default:
             Text(toolsReady ? "Your tools are ready. Let’s put that next file to good use.":"Next, download the missing tools for media and Office files. Tools already on your computer do not need another download.").font(.system(size:13)).foregroundStyle(.secondary)
             Toggle("Ready when you log in",isOn:Binding(get:{launchAtLogin},set:updateLaunch)).toggleStyle(.switch).font(.system(size:12)).disabled(launchUnavailable)
             if launchNeedsApproval { Button("Open Login Items") { SMAppService.openSystemSettingsLoginItems() }.buttonStyle(MalkhButtonStyle(.secondary,compact:true)) }
             if launchUnavailable { Text("Launch at login is unavailable for this copy.").font(.caption).foregroundStyle(.secondary) }
-            if let launchError { Text(launchError).font(.caption).foregroundStyle(.orange).lineLimit(2) }
+            if let launchError { Text(launchError).font(.caption).foregroundStyle(MalkhPalette.alert).lineLimit(2) }
         }
     }
     private var converterItems: [WheelItem] {

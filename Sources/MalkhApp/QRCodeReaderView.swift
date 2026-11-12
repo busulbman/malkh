@@ -83,8 +83,8 @@ struct QRCodeReaderView:View {
                             Text(result.text).font(.system(size:13)).textSelection(.enabled).frame(maxWidth:.infinity,alignment:.leading)
                         }.padding(18).malkhCard(radius:18)
                     }
-                    ForEach(model.report.errors,id:\.self) { Text(verbatim:QRCodeReaderModel.errorText($0,inputs:model.inputs,language:language)).font(.caption).foregroundStyle(.orange) }
-                    if let error=model.error { LText(error).font(.caption).foregroundStyle(.orange) }
+                    ForEach(model.report.errors,id:\.self) { Text(verbatim:QRCodeReaderModel.errorText($0,inputs:model.inputs,language:language)).font(.caption).foregroundStyle(MalkhPalette.alert) }
+                    if let error=model.error { LText(error).font(.caption).foregroundStyle(MalkhPalette.alert) }
                 }.padding(20)
             }
             Divider()
