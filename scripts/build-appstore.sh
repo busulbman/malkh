@@ -50,7 +50,11 @@ python3 scripts/generate-localizations.py >/dev/null
 ditto Resources/Localizations "$app/Contents/Resources"
 [[ -d "$bin/Malkh_MalkhCore.bundle" ]] && ditto "$bin/Malkh_MalkhCore.bundle" "$app/Contents/Resources/Malkh_MalkhCore.bundle"
 cp Tools/appstore/bin/ffmpeg Tools/appstore/bin/ffprobe "$app/Contents/Helpers/"
-ditto Tools/ExifTool "$app/Contents/Resources/Tools/ExifTool"
+# ExifTool: yalnızca çalışan betik ve kütüphanesi (test/örnek dosyaları App Store doğrulamasını bozar).
+mkdir -p "$app/Contents/Resources/Tools/ExifTool"
+cp Tools/ExifTool/exiftool "$app/Contents/Resources/Tools/ExifTool/exiftool"
+ditto Tools/ExifTool/lib "$app/Contents/Resources/Tools/ExifTool/lib"
+[[ -f Tools/ExifTool/LICENSE ]] && cp Tools/ExifTool/LICENSE "$app/Contents/Resources/Tools/ExifTool/LICENSE"
 ditto Resources/Sounds "$app/Contents/Resources/Sounds"
 cp Resources/PagesInterop.js Resources/PDFLib.js Resources/PDFInterop.js Resources/MalkhIcon.icns Resources/THIRD-PARTY-NOTICES.txt "$app/Contents/Resources/"
 ditto Resources/licenses "$app/Contents/Resources/licenses"
@@ -60,6 +64,9 @@ print "FFmpeg 7.1.1 is used under the LGPL 2.1. Source: https://ffmpeg.org/relea
 cp "$profile" "$app/Contents/embedded.provisionprofile"
 find "$app" -name .DS_Store -delete; xattr -cr "$app"
 
+# Apple yalnızca imzalı arm64 programları kabul eder; paket içinde başka Mach-O dosyası kalmasın.
+stray=$(find "$app" -type f ! -path "*/Contents/MacOS/Malkh" ! -path "*/Contents/Helpers/*" -exec sh -c 'file -b "$1" | grep -q "Mach-O" && echo "$1"' _ {} \; || true)
+if [[ -n "$stray" ]]; then print -u2 "Beklenmeyen program dosyaları siliniyor:"; print -u2 -- "$stray"; print -r -- "$stray" | while IFS= read -r f; do rm -f "$f"; done; fi
 print "▸ 5/6  İmzalanıyor"
 entitlements="$out/Malkh.entitlements"
 sed "s/TEAM_ID/$team/g" Configuration/AppStore.entitlements > "$entitlements"
