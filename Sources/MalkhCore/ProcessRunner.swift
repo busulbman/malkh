@@ -86,6 +86,8 @@ public enum Dependencies {
         let variable = "MALKH_" + name.uppercased()
         var paths: [String] = []
         if let override = ProcessInfo.processInfo.environment[variable] ?? ProcessInfo.processInfo.environment["TANGERINE_"+name.uppercased()] { paths.append(override) }
+        // App Store edition: signed, sandboxed helper tools live in Contents/Helpers.
+        paths.append(Bundle.main.bundleURL.appendingPathComponent("Contents/Helpers/\(name)").path)
         if let resource = Bundle.main.resourceURL {
             paths.append(resource.appendingPathComponent("Tools/\(name)").path)
             if name == "exiftool" { paths.append(resource.appendingPathComponent("Tools/ExifTool/exiftool").path) }

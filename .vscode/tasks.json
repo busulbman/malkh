@@ -30,6 +30,24 @@
         "reveal": "always",
         "focus": true
       }
+    },
+    {
+      "label": "Malkh: App Store paketi oluştur",
+      "type": "shell",
+      "command": "scripts/build-appstore.sh ${input:version} ${input:build}",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "focus": true
+      }
+    },
+    {
+      "label": "Malkh: App Store sürümünü F5 gibi çalıştır (test)",
+      "type": "shell",
+      "command": "MALKH_APPSTORE=1 swift build --scratch-path /tmp/malkh-appstore-dev --product Malkh && ditto Resources/Localizations \"$(MALKH_APPSTORE=1 swift build --scratch-path /tmp/malkh-appstore-dev --show-bin-path)\" && \"$(MALKH_APPSTORE=1 swift build --scratch-path /tmp/malkh-appstore-dev --show-bin-path)/Malkh\"",
+      "problemMatcher": [
+        "$swiftc"
+      ]
     }
   ],
   "inputs": [

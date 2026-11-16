@@ -16,3 +16,7 @@ Configuration/CredentialBroker.json
 *.mobileprovision
 **/bin/
 **/obj/
+
+# App Store
+*.provisionprofile
+build/
