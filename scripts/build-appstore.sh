@@ -48,7 +48,22 @@ plutil -replace CFBundleVersion -string "$build" "$plist"
 plutil -replace ITSAppUsesNonExemptEncryption -bool false "$plist"
 python3 scripts/generate-localizations.py >/dev/null
 ditto Resources/Localizations "$app/Contents/Resources"
-[[ -d "$bin/Malkh_MalkhCore.bundle" ]] && ditto "$bin/Malkh_MalkhCore.bundle" "$app/Contents/Resources/Malkh_MalkhCore.bundle"
+# SwiftPM kaynak paketi: App Store, iç içe her bundle'ın standart yapıda ve Info.plist'li olmasını ister.
+res="$app/Contents/Resources/Malkh_MalkhCore.bundle"
+mkdir -p "$res/Contents/Resources"
+ditto "$bin/Malkh_MalkhCore.bundle" "$res/Contents/Resources"
+cat > "$res/Contents/Info.plist" <<PLIST
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+	<key>CFBundleIdentifier</key><string>$bundle_id.resources</string>
+	<key>CFBundleName</key><string>Malkh_MalkhCore</string>
+	<key>CFBundlePackageType</key><string>BNDL</string>
+	<key>CFBundleShortVersionString</key><string>$version</string>
+	<key>CFBundleVersion</key><string>$build</string>
+	<key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
+</dict></plist>
+PLIST
 cp Tools/appstore/bin/ffmpeg Tools/appstore/bin/ffprobe "$app/Contents/Helpers/"
 # ExifTool: yalnızca çalışan betik ve kütüphanesi (test/örnek dosyaları App Store doğrulamasını bozar).
 mkdir -p "$app/Contents/Resources/Tools/ExifTool"

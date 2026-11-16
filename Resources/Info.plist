@@ -9,6 +9,8 @@
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeName</key>
+			<string>File</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -56,6 +58,8 @@
 	</dict>
 	<key>NSHighResolutionCapable</key>
 	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2026 NurAli Khutiev</string>
 	<key>SUAllowsAutomaticUpdates</key>
 	<false/>
 	<key>SUAutomaticallyUpdate</key>
@@ -67,7 +71,7 @@
 	<key>SURequireSignedFeed</key>
 	<true/>
 	<key>SUScheduledCheckInterval</key>
-	<real>3600</real>
+	<real>3600.0</real>
 	<key>SUSignedFeedFailureExpirationInterval</key>
 	<integer>0</integer>
 	<key>SUVerifyUpdateBeforeExtraction</key>
