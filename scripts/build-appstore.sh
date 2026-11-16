@@ -67,6 +67,8 @@ find "$app" -name .DS_Store -delete; xattr -cr "$app"
 # Apple yalnızca imzalı arm64 programları kabul eder; paket içinde başka Mach-O dosyası kalmasın.
 stray=$(find "$app" -type f ! -path "*/Contents/MacOS/Malkh" ! -path "*/Contents/Helpers/*" -exec sh -c 'file -b "$1" | grep -q "Mach-O" && echo "$1"' _ {} \; || true)
 if [[ -n "$stray" ]]; then print -u2 "Beklenmeyen program dosyaları siliniyor:"; print -u2 -- "$stray"; print -r -- "$stray" | while IFS= read -r f; do rm -f "$f"; done; fi
+# Kurulumda dosyaların sahibi root olur; herkes okuyabilmeli (klasör/program 755, diğerleri 644).
+chmod -R u+rwX,go+rX,go-w "$app"
 print "▸ 5/6  İmzalanıyor"
 entitlements="$out/Malkh.entitlements"
 sed "s/TEAM_ID/$team/g" Configuration/AppStore.entitlements > "$entitlements"
