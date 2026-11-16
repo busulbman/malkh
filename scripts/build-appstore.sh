@@ -11,8 +11,12 @@ out="$PWD/build/appstore"; app="$out/Malkh.app"; pkg="$out/Malkh-$version-$build
 profile="Configuration/Malkh_AppStore.provisionprofile"
 
 print "▸ 1/6  Sertifikalar ve profil kontrol ediliyor"
-app_identity=$(security find-identity -v -p codesigning | grep -E '"(Apple Distribution|3rd Party Mac Developer Application):' | head -1 | sed -E 's/.*"(.*)"/\1/')
-installer_identity=$(security find-identity -v | grep -E '"(3rd Party Mac Developer Installer|Mac Installer Distribution):' | head -1 | sed -E 's/.*"(.*)"/\1/')
+identities=$( { security find-identity -v -p codesigning; security find-identity -v -p basic; security find-identity -v; } 2>/dev/null || true)
+app_identity=$(print -r -- "$identities" | grep -E '"(Apple Distribution|3rd Party Mac Developer Application):' | head -1 | sed -E 's/.*"(.*)"/\1/' || true)
+installer_identity=$(print -r -- "$identities" | grep -E '"(3rd Party Mac Developer Installer|Mac Installer Distribution):' | head -1 | sed -E 's/.*"(.*)"/\1/' || true)
+if [[ -z "$app_identity" || -z "$installer_identity" ]]; then
+  print -u2 "Bu Mac'te bulunan imza sertifikaları:"; print -r -- "$identities" | grep '"' | sort -u >&2
+fi
 [[ -n "$app_identity" ]] || { print -u2 "Apple Distribution sertifikası yok. Xcode → Settings → Accounts → Manage Certificates → + → Apple Distribution"; exit 1; }
 [[ -n "$installer_identity" ]] || { print -u2 "Mac Installer Distribution sertifikası yok. Xcode → Settings → Accounts → Manage Certificates → + → Mac Installer Distribution"; exit 1; }
 team=$(print -r -- "$app_identity" | sed -E 's/.*\(([A-Z0-9]{10})\)$/\1/')
