@@ -210,7 +210,7 @@ public enum FeatureCatalog {
     public static func formats(for inputs: [URL]) -> [String] {
         guard let first=inputs.first else { return [] }
         guard inputs.allSatisfy({ !isOrdinaryFolder($0) }) else { return [] }
-        return (conversionMatrix[normalizedExtension(first)] ?? []).filter { format in inputs.allSatisfy { (conversionMatrix[normalizedExtension($0)] ?? []).contains(format) } }
+        return (conversionMatrix[normalizedExtension(first)] ?? []).filter { format in inputs.allSatisfy { (conversionMatrix[normalizedExtension($0)] ?? []).contains(format) && MalkhEdition.allows($0, to: format) } }
     }
     public static func tools(for inputs: [URL]) -> [ToolKind] {
         guard let first=inputs.first else { return [] }

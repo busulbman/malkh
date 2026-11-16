@@ -61,13 +61,13 @@ struct HomeView:View {
                         Spacer()
                     }.padding(.top,8).malkhEntrance()
                     dropZone.malkhEntrance(delay:0.04)
-                    Button { state.onWebDownload?(WebLinkPayload.clipboardLink(),.video) } label:{
+                    if !MalkhEdition.appStore { Button { state.onWebDownload?(WebLinkPayload.clipboardLink(),.video) } label:{
                         HStack(spacing:12) {
                             Image(systemName:"arrow.down.circle.fill").font(.system(size:25)).foregroundStyle(Color.malkh)
                             VStack(alignment:.leading,spacing:4) { Text("Download a link").font(.system(size:14,weight:.bold,design:.rounded));Text("Video, audio, or an image. Straight into your tools.").font(.caption).foregroundStyle(.secondary) }
                             Spacer();if state.webShortcutAvailable { Text("⌃⇧D").font(.system(size:13,weight:.semibold)).foregroundStyle(.secondary) }
                         }.padding(18).frame(maxWidth:.infinity,alignment:.leading).malkhCard()
-                    }.buttonStyle(.plain).accessibilityLabel("Download a link")
+                    }.buttonStyle(.plain).accessibilityLabel("Download a link") }
                     if !state.inputs.isEmpty {
                         selectionActions.transition(.opacity.combined(with:.move(edge:.top)))
                     }
@@ -218,7 +218,7 @@ struct HomeView:View {
         guard !state.working else { return false }
         WebLinkPayload.urls(from:providers) { urls in
             guard !state.working else { return }
-            if urls.first?.isFileURL == false { state.onWebDrop?(urls) }
+            if urls.first?.isFileURL == false { if !MalkhEdition.appStore { state.onWebDrop?(urls) } }
             else if !urls.isEmpty { state.inputs=urls }
         }
         return !providers.isEmpty

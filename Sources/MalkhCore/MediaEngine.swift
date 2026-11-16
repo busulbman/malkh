@@ -584,13 +584,16 @@ public enum MediaEngine {
                     let videoRate = max(1000, Int(totalRate - audioRate))
                     arguments += ["-map", "0:v:0", "-map", "0:a:0?"]
                     if let scale = try scalingFilter(options) { arguments += ["-vf", scale] }
-                    let codec = ext == "webm" ? "libvpx-vp9" : ext == "wmv" ? "wmv2" : ext == "avi" ? "mpeg4" : "libx264"
+                    let codec = ext == "webm" ? "libvpx-vp9" : ext == "wmv" ? "wmv2" : ext == "avi" ? "mpeg4" : h264Encoder
                     arguments += ["-c:v", codec, "-b:v", String(videoRate), "-pix_fmt", "yuv420p"]
                     if codec == "libx264" { arguments += ["-preset", "medium"] }
-                    let log = temp.appendingPathComponent("pass-\(attempt)").path
-                    let firstPass = arguments + ["-an", "-pass", "1", "-passlogfile", log, "-f", "null", "/dev/null"]
-                    try ffmpeg(firstPass, token: token, overwrite: true, duration: info.duration, progress: { value,_ in attemptProgress(OperationProgress.map(value, from: 0, to: 0.5),"Analyzing video…") })
-                    arguments += ["-pass", "2", "-passlogfile", log]
+                    // VideoToolbox (App Store edition) has no two-pass mode; it targets the bitrate in one pass.
+                    if codec != "h264_videotoolbox" {
+                        let log = temp.appendingPathComponent("pass-\(attempt)").path
+                        let firstPass = arguments + ["-an", "-pass", "1", "-passlogfile", log, "-f", "null", "/dev/null"]
+                        try ffmpeg(firstPass, token: token, overwrite: true, duration: info.duration, progress: { value,_ in attemptProgress(OperationProgress.map(value, from: 0, to: 0.5),"Analyzing video…") })
+                        arguments += ["-pass", "2", "-passlogfile", log]
+                    }
                     if info.hasAudio { arguments += audioEncoding(ext == "webm" ? "opus" : ext == "wmv" ? "wma" : ext == "avi" ? "mp3" : "m4a", quality: options.quality, bitrate: Int(audioRate), source: info.audio) }
                     if ["mp4", "mov", "m4v"].contains(ext) { arguments += ["-movflags", "+faststart"] }
                 } else {
@@ -685,6 +688,9 @@ public enum MediaEngine {
         return fallback
     }
 
+    /// H.264 encoder: x264 (GPL) for the GitHub edition, Apple's VideoToolbox for the App Store edition.
+    static var h264Encoder: String { MalkhEdition.appStore ? "h264_videotoolbox" : "libx264" }
+
     private static func videoEncoding(_ ext: String, quality: Double, copyAudio: Bool = false, audioBitrate: Int = 192000, sourceAudio: MediaStream? = nil) -> [String] {
         let crf = String(Int((1 - min(1, max(0, quality))) * 25 + 15))
         var arguments: [String]
@@ -693,7 +699,11 @@ public enum MediaEngine {
         case "webm": arguments = ["-c:v", "libvpx-vp9", "-crf", crf, "-b:v", "0", "-deadline", "good", "-cpu-used", "2"]; audioFormat = "opus"
         case "avi": arguments = ["-c:v", "mpeg4", "-q:v", String(max(2, Int((1 - quality) * 20 + 2)))]; audioFormat = "mp3"
         case "wmv": arguments = ["-c:v", "wmv2", "-q:v", String(max(2, Int((1 - quality) * 20 + 2)))]; audioFormat = "wma"
-        default: arguments = ["-c:v", "libx264", "-preset", "medium", "-crf", crf]; audioFormat = "m4a"
+        default:
+            arguments = MalkhEdition.appStore
+                ? ["-c:v", "h264_videotoolbox", "-q:v", String(Int(40 + min(1, max(0, quality)) * 45)), "-allow_sw", "1"]
+                : ["-c:v", "libx264", "-preset", "medium", "-crf", crf]
+            audioFormat = "m4a"
         }
         arguments += ["-pix_fmt", "yuv420p"]
         arguments += copyAudio ? ["-c:a", "copy"] : audioEncoding(audioFormat, quality: quality, bitrate: audioBitrate, source: sourceAudio)

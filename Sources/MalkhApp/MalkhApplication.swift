@@ -123,7 +123,7 @@ enum MalkhApplication {
 
     func applicationDidFinishLaunching(_ notification:Notification) {
         MalkhAppearance.apply()
-        UserDefaults.standard.register(defaults:["enabled":true,"reveal":true,"sound":true,"convertKey":"shift","toolsKey":"command","actionsKey":"control","wheelScale":1.0,"windowManagementEnabled":true])
+        UserDefaults.standard.register(defaults:["enabled":true,"reveal":true,"sound":true,"convertKey":"shift","toolsKey":"command","actionsKey":"control","wheelScale":1.0,"windowManagementEnabled":!MalkhEdition.appStore])
         let mainMenu=NSMenu();let appMenu=NSMenu()
         appMenu.addItem(withTitle:"Home",action:#selector(showHome),keyEquivalent:"1")
         appMenu.addItem(withTitle:"Library",action:#selector(showLibrary),keyEquivalent:"2")
@@ -158,6 +158,11 @@ enum MalkhApplication {
         statusItem.button?.image=MalkhArtwork.menuIcon()
         statusItem.menu=menu;menu.delegate=self
         appMenu.delegate=self
+        if MalkhEdition.appStore {
+            // App Store edition: no web downloads and no self-updater; the Mac App Store delivers updates.
+            let removed:[Selector]=[#selector(showDownloadLink),#selector(checkForUpdates),#selector(showUpdateConnection)]
+            for m in [appMenu,menu] { for item in m.items { if let action=item.action,removed.contains(action) { m.removeItem(item) } } }
+        }
         L10n.localize(mainMenu);L10n.localize(menu)
         NotificationCenter.default.publisher(for:.malkhLanguageChanged).sink { _ in L10n.localize(NSApp.mainMenu);L10n.localize(menu);L10n.updateWindowTitles() }.store(in:&updateObservations)
         state.$working.sink { [weak self] working in guard let self else{return};self.updater.setBusy(working || self.toolSetupWorking) }.store(in:&updateObservations)
@@ -177,15 +182,17 @@ enum MalkhApplication {
         NotificationCenter.default.publisher(for:.showToolSetup).sink { [weak self] _ in self?.showToolSetup() }.store(in:&updateObservations)
         wheel=WheelController(state:state)
         monitor=DragMonitor(onEnd:{ [weak self] in self?.wheel.endDrag() }) { [weak self] urls,mode,point in self?.wheel.show(inputs:urls,mode:mode,at:point) }
+        if !MalkhEdition.appStore {
         windowManagement=WindowManagementController(fileWheelIsVisible:{ [weak self] in self?.wheel.panel?.isVisible == true })
         windowManagement.onNotice = { message in
             let alert=NSAlert();alert.messageText=L10n.text("Window arrangement");alert.informativeText=L10n.text(message)
             alert.addButton(withTitle:L10n.text("OK"));alert.runModal()
         }
+        }
         state.onOpenWheel = { [weak self] in self?.wheel.show(inputs:self?.state.inputs ?? [],mode:.tools,at:NSEvent.mouseLocation,keyboard:true) }
         state.onWebDownload = { [weak self] url,mode in self?.showWebDownload(url,mode:mode) }
         state.onWebDrop = { [weak self] urls in self?.wheel.show(inputs:urls,mode:.tools,at:NSEvent.mouseLocation,keyboard:true) }
-        registerDownloadShortcut()
+        if !MalkhEdition.appStore { registerDownloadShortcut() }
         homeKeyboardMonitor=NSEvent.addLocalMonitorForEvents(matching:.keyDown) { [weak self] event in
             guard let self,event.window===self.home,self.home?.isKeyWindow==true else{return event}
             return self.state.handleHomeKey(event,window:self.home!) ? nil:event
@@ -231,6 +238,7 @@ enum MalkhApplication {
     }
     @objc func showDownloadLink() { showWebDownload(WebLinkPayload.clipboardLink(),mode:.video) }
     func showWebDownload(_ url:URL?,mode:WebDownloadMode) {
+        guard !MalkhEdition.appStore else { return }
         if downloadWindow == nil {
             downloadWindow=makeToolWindow(title:"Download from the web",size:NSSize(width:660,height:680),view:WebDownloadView(model:downloadModel,state:state))
             downloadWindow?.contentMinSize=NSSize(width:620,height:520)
@@ -321,7 +329,8 @@ enum MalkhApplication {
         state.retainToolWindow(window);window.makeKeyAndOrderFront(nil);NSApp.activate(ignoringOtherApps:true)
     }
     func application(_ application:NSApplication,open urls:[URL]) {
-        if let web=urls.first(where:{!$0.isFileURL}),let valid=try? WebDownloadEngine.link(web.absoluteString) { showWebDownload(valid,mode:.video) }
+        if !MalkhEdition.appStore,let web=urls.first(where:{!$0.isFileURL}),let valid=try? WebDownloadEngine.link(web.absoluteString) { showWebDownload(valid,mode:.video) }
+        else if MalkhEdition.appStore && urls.allSatisfy({!$0.isFileURL}) { return }
         else { if !state.working { state.inputs=urls };showHome();state.onOpenWheel?() }
     }
     func applicationShouldTerminate(_ sender:NSApplication)->NSApplication.TerminateReply {

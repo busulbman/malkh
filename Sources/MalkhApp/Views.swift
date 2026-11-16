@@ -68,7 +68,7 @@ struct SettingsView:View {
             VStack(alignment:.leading,spacing:24) {
                 HStack(spacing:9) { MalkhMark(size:32);Text("Make it yours").font(.system(size:14,weight:.bold,design:.rounded)) }.padding(.top,20)
                 VStack(spacing:5) {
-                    ForEach(SettingsSection.allCases) { item in
+                    ForEach(SettingsSection.allCases.filter { !MalkhEdition.appStore || $0 != .updates }) { item in
                         Button { section=item } label:{
                             HStack(spacing:10) { Image(systemName:item.symbol).frame(width:19);LText(item.rawValue).lineLimit(1).layoutPriority(1);Spacer() }
                                 .font(.system(size:12,weight:section==item ? .semibold:.medium,design:.rounded))
@@ -116,6 +116,7 @@ struct SettingsView:View {
                     Text("Tap the chosen modifier combination while dragging files.").font(.caption).foregroundStyle(.secondary)
                 }.padding(10)
             }.id(shortcutsRevision)
+            if !MalkhEdition.appStore {
             GroupBox("Window management") {
                 VStack(alignment:.leading,spacing:13) {
                     Toggle("Arrange windows while dragging",isOn:$windowManagementEnabled)
@@ -137,6 +138,7 @@ struct SettingsView:View {
                 }.padding(10)
             }
             .onReceive(Timer.publish(every:2,on:.main,in:.common).autoconnect()) { _ in windowAccessibility=AXIsProcessTrusted() }
+            }
             GroupBox("File actions") {
                 VStack(spacing:16) {
                     HStack { Text("Float Behaviour");Spacer();Picker("Float behavior",selection:$floatBehavior) { Text("Create a New Float").tag("createNew");Text("Add Files to an Existing Float").tag("addToExisting") }.labelsHidden().frame(maxWidth:240) }

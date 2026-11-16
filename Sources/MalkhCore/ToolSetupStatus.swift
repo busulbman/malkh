@@ -13,7 +13,7 @@ public struct ToolSetupStatus: Equatable, Sendable {
         self.mediaReady = mediaReady; self.officeReady = officeReady
     }
     public init(resolve: (String) -> URL?) {
-        mediaReady = ["ffmpeg", "ffprobe", "yt-dlp", "deno"].allSatisfy { resolve($0) != nil }
+        mediaReady = (MalkhEdition.appStore ? ["ffmpeg", "ffprobe"] : ["ffmpeg", "ffprobe", "yt-dlp", "deno"]).allSatisfy { resolve($0) != nil }
         officeReady = resolve("soffice") != nil
     }
     public var ready: Bool { mediaReady }

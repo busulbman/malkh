@@ -30,7 +30,7 @@ public enum MediaPreviewEngine {
             if info.hasVideo {
                 // Autorotation is enabled by FFmpeg. reset_sar also preserves anamorphic display geometry.
                 let scale = "scale=w='min(1920,iw)':h='min(1080,ih)':force_original_aspect_ratio=decrease:force_divisible_by=2:reset_sar=1"
-                arguments += ["-map", "0:v:0", "-map", "0:a:0?", "-vf", scale, "-c:v", "libx264", "-preset", "veryfast", "-crf", "24", "-pix_fmt", "yuv420p"]
+                arguments += ["-map", "0:v:0", "-map", "0:a:0?", "-vf", scale, ] + (MalkhEdition.appStore ? ["-c:v", "h264_videotoolbox", "-q:v", "55", "-allow_sw", "1"] : ["-c:v", "libx264", "-preset", "veryfast", "-crf", "24"]) + ["-pix_fmt", "yuv420p"]
             } else { arguments += ["-map", "0:a:0", "-vn"] }
             if info.hasAudio { arguments += ["-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2"] }
             arguments += ["-movflags", "+faststart", output.path]

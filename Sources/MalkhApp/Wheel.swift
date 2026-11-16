@@ -277,7 +277,7 @@ final class WheelAccessibilityItem:NSAccessibilityElement {
         guard let mode=Self.mode(for:flags),!shown || mode != lastMode else { return }
         let urls=WebLinkPayload.urls(from:board)
         guard !urls.isEmpty else { return }
-        if urls.first?.isFileURL != false || mode == .tools {
+        if urls.first?.isFileURL != false || (mode == .tools && !MalkhEdition.appStore) {
             shown=true;lastMode=mode;onActivate(urls,mode,NSEvent.mouseLocation)
         }
     }
