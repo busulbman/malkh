@@ -20,7 +20,7 @@ public enum AppLocalization {
         return [source,text(source,language:language)].contains { $0.range(of:needle,options:[.caseInsensitive,.diacriticInsensitive],locale:locale) != nil }
     }
     private static func loadCatalog(_ name:String) -> [String:String] {
-        guard let url = Bundle.module.url(forResource: name, withExtension: "json", subdirectory: "Resources"),
+        guard let url = MalkhResources.url(name, "json"),
               let data = try? Data(contentsOf: url),
               let values = try? JSONDecoder().decode([String:String].self, from: data) else { return [:] }
         return values
@@ -37,7 +37,7 @@ public enum AppLocalization {
     }
     /// Product and key names that keep Latin capitals in Turkish upper case (SHIFT, not SHİFT).
     public static let latinWords: Set<String> = {
-        guard let url = Bundle.module.url(forResource: "LatinWords", withExtension: "json", subdirectory: "Resources"),
+        guard let url = MalkhResources.url("LatinWords", "json"),
               let data = try? Data(contentsOf: url),
               let words = try? JSONDecoder().decode([String].self, from: data) else { return [] }
         return Set(words)

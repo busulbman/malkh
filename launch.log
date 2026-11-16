@@ -1,0 +1,150 @@
+2026-11-16 23:21:30.512 Df Malkh[27149:66a30e] [com.apple.processmanager:front-35286506] CHECKEDIN: pid=27149 asn=0x0-0x1727726 foreground=0
+2026-11-16 23:21:30.512 Df Malkh[27149:66a30e] [com.apple.xpc:connection] [0x786c9c280] activating connection: mach=false listener=true peer=false name=(anonymous)
+2026-11-16 23:21:30.512 Df Malkh[27149:66a30e] [com.apple.xpc:connection] [0x786c9c280] Connection returned listener port: 0x4203
+2026-11-16 23:21:30.512 Df Malkh[27149:66a31b] [com.apple.xpc:connection] [0x786cc4300] activating connection: mach=false listener=false peer=true name=com.apple.xpc.anonymous.0x786c9c280.peer[467].0x786cc4300
+2026-11-16 23:21:30.513 Df loginwindow[500:12b5] [com.apple.loginwindow.logging:Standard] -[Application _updateInformationInternal] | Got App URL: file:///Applications/Malkh.app/
+2026-11-16 23:21:30.514 Df Malkh[27149:66a30e] [com.apple.processmanager:front-35286506] FRONTLOGGING: version 1
+2026-11-16 23:21:30.514 Df Malkh[27149:66a30e] [com.apple.processmanager:front-35286506] Registered, pid=27149 ASN=0x0,0x1727726
+2026-11-16 23:21:30.514 Df loginwindow[500:12b5] [com.apple.loginwindow.logging:Standard] -[ApplicationManager checkInAppContext:eventData:] | ApplicationManager: Checked in app : Malkh
+2026-11-16 23:21:30.516 Df Malkh[27149:66a30e] [com.apple.xpc:connection] [0x786c9c3c0] activating connection: mach=true listener=false peer=false name=com.apple.analyticsd
+2026-11-16 23:21:30.518 Df WindowServer[499:12bb] [com.apple.SkyLight.processes:Lifecycle] 14bb9f[CreateApplication]: Process creation: 0x0-0x1727726 (Malkh) connectionID: 14BB9F pid: 27149 in session 0x101
+2026-11-16 23:21:30.520 Df Malkh[27149:66a30e] [com.apple.xpc:connection] [0x786c9c280] Connection returned listener port: 0x4203
+2026-11-16 23:21:30.520 Df Malkh[27149:66a30e] [com.apple.processmanager:front-35286506] BringForward: pid=27149 asn=0x0-0x1727726 bringForward=0 foreground=0 uiElement=1 launchedByLS=1 modifiersCount=1 allDisabled=0
+2026-11-16 23:21:30.520 Df Malkh[27149:66a30e] [com.apple.processmanager:front-35286506] BringFrontModifier: pid=27149 asn=0x0-0x1727726 Modifier 0 hideAfter=0 hideOthers=0 dontMakeFrontmost=0 mouseDown=0/0 seed=0/0
+2026-11-16 23:21:30.523 Df Malkh[27149:66a30e] [com.apple.AppKit:Appearance] Current system appearance, (HLTB: 2), (SLS: 1)
+2026-11-16 23:21:30.528 Df Malkh[27149:66a30e] (libMobileGestalt.dylib) No persisted cache on this platform.
+2026-11-16 23:21:30.530 Df Malkh[27149:66a30e] [com.apple.AppKit:Appearance] Current system appearance, (HLTB: 2), (SLS: 1)
+2026-11-16 23:21:30.532 Df Malkh[27149:66a30e] [com.apple.AppKit:Appearance] Post-registration system appearance: (HLTB: 2)
+2026-11-16 23:21:30.538 Df Malkh[27149:66a31b] [com.apple.xpc:connection] [0x786c9c500] activating connection: mach=true listener=false peer=false name=com.apple.lsd.mapdb
+2026-11-16 23:21:30.549 Df Malkh[27149:66a30e] [com.apple.FrontBoard:Common] FBSWorkspace: endpoint monitoring is disabled.
+2026-11-16 23:21:30.549 Df Malkh[27149:66a30e] [com.apple.FrontBoard:Common] FBSWorkspace: default shell endpoint is disabled.
+2026-11-16 23:21:30.550 Df Malkh[27149:66a30e] [com.apple.runningboard:connection] Initializing connection
+2026-11-16 23:21:30.550 Df Malkh[27149:66a30e] [com.apple.runningboard:process] Removing all cached process handles
+2026-11-16 23:21:30.550 Df Malkh[27149:66a31b] [com.apple.runningboard:connection] Sending handshake request attempt #1 to server
+2026-11-16 23:21:30.550 Df Malkh[27149:66a31b] [com.apple.runningboard:connection] Creating connection to com.apple.runningboard
+2026-11-16 23:21:30.550 Df Malkh[27149:66a31b] [com.apple.xpc:connection] [0x786c9c640] activating connection: mach=true listener=false peer=false name=com.apple.runningboard
+2026-11-16 23:21:30.551 A  Malkh[27149:66a327] (RunningBoardServices) didChangeInheritances
+2026-11-16 23:21:30.551 Df Malkh[27149:66a30e] [com.apple.xpc:connection] [0x786c9c280] Connection returned listener port: 0x4203
+2026-11-16 23:21:30.553 Df Malkh[27149:66a31b] [com.apple.runningboard:connection] Handshake succeeded
+2026-11-16 23:21:30.553 Df Malkh[27149:66a31b] [com.apple.runningboard:connection] Identity resolved as app<application.com.busulbman.malkh.40227697.40227711(501)>
+2026-11-16 23:21:30.557 Df Malkh[27149:66a30e] [com.apple.xpc:connection] [0x786c9c280] Connection returned listener port: 0x4203
+2026-11-16 23:21:30.582 A  Malkh[27149:66a327] (AppIntents) appintents:register process
+2026-11-16 23:21:30.589 Df Malkh[27149:66a30e] [com.apple.xpc:connection] [0x786c9cb40] activating connection: mach=true listener=false peer=false name=com.apple.fonts
+2026-11-16 23:21:30.596 Df Malkh[27149:66a327] [com.apple.appintents:Connection] Created a new Process Instance Registry XPC connection (inactive)
+2026-11-16 23:21:30.596 Df Malkh[27149:66a327] [com.apple.xpc:connection] [0x786c9ca00] activating connection: mach=true listener=false peer=false name=com.apple.linkd.autoShortcut
+2026-11-16 23:21:30.596 Df Malkh[27149:66a327] [com.apple.appintents:Connection] Activated connection to linkd (ApplicationService)
+2026-11-16 23:21:30.606 Df Malkh[27149:66a30e] [com.apple.AppKit:Appearance] NSApp cache appearance:
+-NSRequiresAquaSystemAppearance: 0
+-appearance: (null)
+-effectiveAppearance: <NSCompositeAppearance: 0x786c6c500
+ (
+    "<NSDarkAquaAppearance: 0x786c6c8c0>",
+    "<NSSystemAppearance: 0x786c6c6e0>"
+)>
+2026-11-16 23:21:30.612 Df Malkh[27149:66a30e] [com.apple.dt.xctest:Default] Registering for test daemon availability notify post.
+2026-11-16 23:21:30.612 Df Malkh[27149:66a30e] [com.apple.dt.xctest:Default] notify_get_state check indicated test daemon not ready.
+2026-11-16 23:21:30.612 Df Malkh[27149:66a30e] [com.apple.dt.xctest:Default] notify_get_state check indicated test daemon not ready.
+2026-11-16 23:21:30.612 Df Malkh[27149:66a30e] [com.apple.dt.xctest:Default] notify_get_state check indicated test daemon not ready.
+2026-11-16 23:21:30.615 Df Malkh[27149:66a30e] [com.apple.xpc:connection] [0x786c9cf00] activating connection: mach=true listener=false peer=false name=com.apple.coreservices.appleevents
+2026-11-16 23:21:30.616 Df Malkh[27149:66a327] [com.apple.xpc:connection] [0x786c9cc80] activating connection: mach=false listener=true peer=false name=(anonymous)
+2026-11-16 23:21:30.617 A  Malkh[27149:66a31c] (RunningBoardServices) didChangeInheritances
+2026-11-16 23:21:30.621 Df Malkh[27149:66a30e] [com.apple.xpc:connection] [0x786c9c280] Connection returned listener port: 0x4203
+2026-11-16 23:21:30.621 Df Malkh[27149:66a30e] [com.apple.processmanager:front-35286506] SignalReady: pid=27149 asn=0x0-0x1727726
+2026-11-16 23:21:30.622 Df Malkh[27149:66a30e] [com.apple.processmanager:front-35286506] SIGNAL: pid=27149 asn=0x0x-0x1727726
+2026-11-16 23:21:30.622 Df loginwindow[500:12b5] [com.apple.loginwindow.logging:Standard] -[Application _updateInformationInternal] | Got App URL: file:///Applications/Malkh.app/
+2026-11-16 23:21:30.624 A  Malkh[27149:66a30e] (CoreFoundation) Loading Preferences From User CFPrefsD
+2026-11-16 23:21:30.624 A  Malkh[27149:66a30e] (CoreFoundation) Loading Preferences From System CFPrefsD
+2026-11-16 23:21:30.624 Df Malkh[27149:66a327] [com.apple.xpc:connection] [0x786c9cc80] Connection returned listener port: 0x6a03
+2026-11-16 23:21:30.626 A  Malkh[27149:66a30e] (libsystem_containermanager.dylib) container_create_or_lookup_for_current_user
+2026-11-16 23:21:30.626 A  Malkh[27149:66a30e] (libsystem_containermanager.dylib) container_create_or_lookup_for_platform
+2026-11-16 23:21:30.626 Df Malkh[27149:66a30e] [com.apple.containermanager:xpc] Requesting container lookup; personaid = 4294967295, type = NOPERSONA, name = <unknown>, origin [pid = 0, personaid = 0], proximate [pid = 0, personaid = 0], class = 2, identifier = <private>, group_identifier = <private>, create = 0, temp = 0, euid = 501, uid = 501
+2026-11-16 23:21:30.626 A  Malkh[27149:66a30e] (libsystem_containermanager.dylib) container_query_t
+2026-11-16 23:21:30.626 Df Malkh[27149:66a30e] [com.apple.containermanager:query] Query; personaid = 4294967295, type = NOPERSONA, name = <unknown>, origin [pid = 0, personaid = 0], proximate [pid = 0, personaid = 0], euid = 501, uid = 501, class = 2, identifier = [(null)](0), flags = 900000002
+2026-11-16 23:21:30.628 Df Malkh[27149:66a30e] [com.apple.containermanager:unspecified] _container_query_get_result_at_index: success
+2026-11-16 23:21:30.628 A  Malkh[27149:66a30e] (libsystem_containermanager.dylib) container_copy_object
+2026-11-16 23:21:30.628 Df Malkh[27149:66a30e] [com.apple.containermanager:unspecified] container_create_or_lookup_for_platform: success
+2026-11-16 23:21:30.629 A  Malkh[27149:66a30e] (libsystem_info.dylib) Membership API: translate identifier
+2026-11-16 23:21:30.632 Df Malkh[27149:66a30e] [com.apple.xpc:connection] [0x786c9d040] activating connection: mach=false listener=false peer=false name=com.apple.hiservices-xpcservice
+2026-11-16 23:21:30.635 Df tccd[497:669f6c] [com.apple.TCC:access] -[TCCDAccessIdentity staticCode]: static code for: identifier com.busulbman.malkh, type: 0: 0xc38db1800 at /Applications/Malkh.app
+2026-11-16 23:21:30.635 Df Malkh[27149:66a327] [com.apple.appintents:Connection] Registered process with identifier 27149-1058588
+2026-11-16 23:21:30.647 Df Malkh[27149:66a30e] [com.apple.AppKit:AutomaticTermination] void _NSDisableAutomaticTerminationAndLog(NSString *) Restoring windows
+2026-11-16 23:21:30.647 Df Malkh[27149:66a30e] [com.apple.AppKit:StateRestoration] -[NSApplication _reopenWindowsAsNecessaryIncludingRestorableState:withFullFidelity:completionHandler:] shouldRestoreState=1 hasPersistentStateToRestore=0 shouldStillRestoreStateAfterPrompting=0
+2026-11-16 23:21:30.647 Df Malkh[27149:66a30e] [com.apple.xpc:connection] [0x786c9d2c0] activating connection: mach=true listener=false peer=false name=com.apple.window_proxies
+2026-11-16 23:21:30.647 Df Malkh[27149:66a30e] [com.apple.xpc:connection] [0x786c9d2c0] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+2026-11-16 23:21:30.649 Df Malkh[27149:66a30e] [com.apple.AppKit:AutomaticTermination] void _NSEnableAutomaticTerminationAndLog(NSString *) Restoring windows
+2026-11-16 23:21:30.650 Df Malkh[27149:66a30e] [com.apple.AppKit:Appearance] Invalidate NSApp effectiveAppearance
+2026-11-16 23:21:30.844 A  Malkh[27149:66a30e] (CoreFoundation) Loading Preferences From System CFPrefsD
+2026-11-16 23:21:30.860 Df Malkh[27149:66a30e] [com.apple.GenerativeModels:availability] registering darwin observer for name: com.apple.gms.availability.notification
+2026-11-16 23:21:30.860 Df Malkh[27149:66a30e] [com.apple.GenerativeModels:availability] registering darwin observer for name: com.apple.os-eligibility-domain.change.greymatter
+2026-11-16 23:21:30.860 Df Malkh[27149:66a30e] [com.apple.GenerativeModels:availability] registering darwin observer for name: com.apple.language.changed
+2026-11-16 23:21:30.860 Df Malkh[27149:66a30e] [com.apple.WritingTools:Default] isAvailable value changed: isMDMAllowed = true, gmAvailable (current) = false
+2026-11-16 23:21:30.875 A  Malkh[27149:66a30e] (CoreFoundation) Loading Preferences From User CFPrefsD
+2026-11-16 23:21:30.875 A  Malkh[27149:66a30e] (CoreFoundation) Loading Preferences From User CFPrefsD
+2026-11-16 23:21:30.877 Df Malkh[27149:66a327] [com.apple.CoreAnalytics:client] Received configuration update from daemon (initial)
+2026-11-16 23:21:30.926 Df Malkh[27149:66a30e] [com.apple.AppKit:Appearance] NSApp cache appearance:
+-NSRequiresAquaSystemAppearance: 0
+-appearance: (null)
+-effectiveAppearance: <NSCompositeAppearance: 0x786c6c500
+ (
+    "<NSDarkAquaAppearance: 0x786c6c8c0>",
+    "<NSSystemAppearance: 0x786c6c6e0>"
+)>
+2026-11-16 23:21:30.935 Df Malkh[27149:66a31c] [com.apple.corespotlight:index] (<private>) deleteSearchableItemsWithDomainIdentifiers, protectionClass:(null), domainIdentifiers number:1
+2026-11-16 23:21:30.935 A  Malkh[27149:66a31c] (CoreSpotlight) delete-domains
+2026-11-16 23:21:30.936 Df Malkh[27149:66a31b] [com.apple.corespotlight:index] CSInlineDonation:<private>: Skipping donation (feature flag disabled)
+2026-11-16 23:21:30.936 Df Malkh[27149:66a31b] (CoreSpotlight) sConnectionName: com.apple.spotlight.IndexAgent
+2026-11-16 23:21:30.936 Df Malkh[27149:66a31b] (CoreSpotlight) Start service name com.apple.spotlight.IndexAgent
+2026-11-16 23:21:30.936 Df Malkh[27149:66a31b] [com.apple.xpc:connection] [0x786c9d900] activating connection: mach=true listener=false peer=false name=com.apple.spotlight.IndexAgent
+2026-11-16 23:21:30.936 Df Malkh[27149:66a30e] [com.apple.BoardServices:XPCErrors] [C:1] Alloc com.apple.controlcenter.statusitems
+2026-11-16 23:21:30.936 Df Malkh[27149:66a30e] [com.apple.xpc:connection] [0x786c9da40] activating connection: mach=false listener=false peer=false name=(anonymous)
+2026-11-16 23:21:30.936 Df Malkh[27149:66a30e] [com.apple.FrontBoard:Common] FBSWorkspace registering source: <private>
+2026-11-16 23:21:30.941 Df Malkh[27149:66a30e] [com.apple.FrontBoard:Common] FBSWorkspace connected to endpoint : <private>
+2026-11-16 23:21:30.941 Df Malkh[27149:66a30e] [com.apple.FrontBoard:Common] <FBSWorkspaceScenesClient:0x786f38000 <private>> attempting immediate handshake from activate
+2026-11-16 23:21:30.941 Df Malkh[27149:66a30e] [com.apple.FrontBoard:Common] <FBSWorkspaceScenesClient:0x786f38000 <private>> sent handshake
+2026-11-16 23:21:30.942 Df Malkh[27149:66a30e] [com.apple.FrontBoard:SceneExtension] Realizing settings extension __NSStatusItemSceneHostSettings__ on FBSSceneSettings
+2026-11-16 23:21:30.943 Df Malkh[27149:66a30e] [com.apple.FrontBoard:SceneExtension] Realizing settings extension __NSStatusItemSceneClientSettings__ on FBSSceneClientSettings
+2026-11-16 23:21:30.943 Df Malkh[27149:66a30e] [com.apple.FrontBoard:SceneExtension] Realizing settings extension FBSSceneSettingsCore on FBSSceneSettings
+2026-11-16 23:21:30.944 Df Malkh[27149:66a327] [com.apple.xpc:connection] [0x786c9db80] activating connection: mach=true listener=false peer=false name=com.apple.dock.fullscreen
+2026-11-16 23:21:30.945 Df Malkh[27149:66a30e] [com.apple.FrontBoard:SceneExtension] Realizing settings extension FBSSceneClientSettingsCore on FBSSceneClientSettings
+2026-11-16 23:21:30.946 Df Malkh[27149:66a30e] [com.apple.FrontBoard:Common] Requesting scene <FBSScene: 0x786f383c0; com.apple.controlcenter:89C605C0-66F5-4E05-A43B-94CC731D1CCA> from com.apple.controlcenter.statusitems
+2026-11-16 23:21:30.949 Df Malkh[27149:66a30e] [com.apple.FrontBoard:SceneExtension] Realizing settings extension FBSSceneTransitionContextCore on FBSSceneTransitionContext
+2026-11-16 23:21:30.950 A  Malkh[27149:66a327] (RunningBoardServices) didChangeInheritances
+2026-11-16 23:21:30.951 Df Malkh[27149:66a30e] [com.apple.FrontBoard:SceneExtension] Realizing settings extension __NSHostedViewSceneSettings__ on FBSSceneSettings
+2026-11-16 23:21:30.951 Df Malkh[27149:66a30e] [com.apple.FrontBoard:SceneExtension] Realizing settings extension __NSClientHostedViewSceneSettings__ on FBSSceneClientSettings
+2026-11-16 23:21:30.952 Df Malkh[27149:66a30e] [com.apple.FrontBoard:SceneExtension] Realizing settings extension __NSStatusItemAuxiliaryViewSceneSettings__ on FBSSceneSettings
+2026-11-16 23:21:30.952 Df Malkh[27149:66a30e] [com.apple.FrontBoard:SceneExtension] Realizing settings extension __NSClientStatusItemAuxiliaryViewSceneSettings__ on FBSSceneClientSettings
+2026-11-16 23:21:30.952 Df Malkh[27149:66a30e] [com.apple.FrontBoard:Common] Requesting scene <FBSScene: 0x786f38320; com.apple.controlcenter:89C605C0-66F5-4E05-A43B-94CC731D1CCA-Aux[1]-NSStatusItemView> from com.apple.controlcenter.statusitems
+2026-11-16 23:21:30.955 Df Malkh[27149:66a30e] [com.apple.FrontBoard:SceneClient] [com.apple.controlcenter:89C605C0-66F5-4E05-A43B-94CC731D1CCA-Aux[1]-NSStatusItemView] Sending action(s) in update: NSSceneFenceAction
+2026-11-16 23:21:30.955 Df Malkh[27149:66a30e] [com.apple.FrontBoard:SceneClient] [com.apple.controlcenter:89C605C0-66F5-4E05-A43B-94CC731D1CCA-Aux[1]-NSStatusItemView] Dropping transition context because the scene is reconnecting
+2026-11-16 23:21:30.957 Df Malkh[27149:66a31b] [com.apple.FrontBoard:Common] Request for <FBSScene: 0x786f383c0; com.apple.controlcenter:89C605C0-66F5-4E05-A43B-94CC731D1CCA> complete!
+2026-11-16 23:21:30.958 Df Malkh[27149:66a31b] [com.apple.FrontBoard:Common] <FBSWorkspaceScenesClient:0x786f38000 <private>> Reconnecting scene com.apple.controlcenter:89C605C0-66F5-4E05-A43B-94CC731D1CCA
+2026-11-16 23:21:30.959 Df Malkh[27149:66a31b] [com.apple.FrontBoard:Common] <FBSWorkspaceScenesClient:0x786f38000 <private>> Reconnecting scene com.apple.controlcenter:89C605C0-66F5-4E05-A43B-94CC731D1CCA-Aux[1]-NSStatusItemView
+2026-11-16 23:21:30.959 Df Malkh[27149:66a31b] [com.apple.FrontBoard:Common] Request for <FBSScene: 0x786f38320; com.apple.controlcenter:89C605C0-66F5-4E05-A43B-94CC731D1CCA-Aux[1]-NSStatusItemView> complete!
+2026-11-16 23:21:30.962 Df Malkh[27149:66a30e] [com.apple.FrontBoard:SceneClient] [com.apple.controlcenter:89C605C0-66F5-4E05-A43B-94CC731D1CCA-Aux[1]-NSStatusItemView] Sending action(s) in update: NSSceneFenceAction
+2026-11-16 23:21:30.964 E  kernel[0:66a30e] (Sandbox) Sandbox: Malkh(27149) deny(1) file-read-data /private/tmp/malkh-appstore-build/arm64-apple-macosx/release/Malkh_MalkhCore.bundle
+2026-11-16 23:21:30.965 Df Malkh[27149:66a30e] (libswiftCore.dylib) MalkhCore/resource_bundle_accessor.swift:12: Fatal error: could not load resource bundle: from /Applications/Malkh.app/Malkh_MalkhCore.bundle or /tmp/malkh-appstore-build/arm64-apple-macosx/release/Malkh_MalkhCore.bundle
+2026-11-16 23:21:30.965 Df kernel[0:66a30e] (AppleMobileFileIntegrity) AMFI: Denying core dump for pid 27149 (Malkh)
+2026-11-16 23:21:30.965 Df kernel[0:66a30e] Malkh[27149] Corpse allowed 1 of 5
+2026-11-16 23:21:30.965 Df WindowServer[499:12bb] [com.apple.SkyLight.processes:Lifecycle] 0[outside of RPC]: Process death: 0x0-0x1727726 (Malkh) connectionID: 14BB9F pid: 27149 in session 0x101
+2026-11-16 23:21:30.965 Df WindowServer[499:12bb] [com.apple.SkyLight.processes:Focus] <BSCompoundAssertion:0xc6c801540> ([FocusManager:257]-deferringPolicyEvaluationSuppression) acquire for reason:process death - 0x0-0x1727726 (Malkh) acq:0xc67a8d060 count:1
+2026-11-16 23:21:30.967 Df WindowServer[499:12bb] [com.apple.SkyLight.processes:Focus] 0[outside of RPC]: [FocusManager:257] update to deferring policy requested for reason: permitted list updated - 0x0-0x1727726 removed - but we are suppressing evaluation for reasons: {(
+    "process death - 0x0-0x1727726 (Malkh)"
+)}
+2026-11-16 23:21:30.967 Df WindowServer[499:12bb] [com.apple.SkyLight.processes:Focus] 0[outside of RPC]: [FocusManager:257] update to deferring policy requested for reason: permitted list updated - 0x1-0x6a0d removed - but we are suppressing evaluation for reasons: {(
+    "process death - 0x0-0x1727726 (Malkh)"
+)}
+2026-11-16 23:21:30.991 Df loginwindow[500:12b5] [com.apple.loginwindow.logging:AppExit] -[ApplicationManager handleCASEvent:withData:] | CAS notification for appDeath for com.busulbman.malkh with asn: LSASN:{hi=0x0;lo=0x1727726} for bundle path: /Applications/Malkh.app with URL: file:///Applications/Malkh.app/
+2026-11-16 23:21:30.991 Df loginwindow[500:12b5] [com.apple.loginwindow.logging:Standard] -[Application setState:] | enter: <Application: 0xa3eaef020: Malkh> state 3
+2026-11-16 23:21:30.991 Df loginwindow[500:12b5] [com.apple.loginwindow.logging:TAL] -[PersistentAppsSupport applicationQuit:] | for app:Malkh, _appTrackingState = 2
+2026-11-16 23:21:30.991 Df loginwindow[500:12b5] [com.apple.loginwindow.logging:Standard] -[Application setState:] | enter: <Application: 0xa3eaef020: Malkh> state 4
+2026-11-16 23:21:30.991 Df loginwindow[500:12b5] [com.apple.loginwindow.logging:TAL] -[PersistentAppsSupport applicationQuit:] | for app:Malkh, _appTrackingState = 2
+2026-11-16 23:21:31.783 Df ReportCrash[8486:66a15e] ASI found [libswiftCore.dylib] (sensitive) 'MalkhCore/resource_bundle_accessor.swift:12: Fatal error: could not load resource bundle: from /Applications/Malkh.app/Malkh_MalkhCore.bundle or /tmp/malkh-appstore-build/arm64-apple-macosx/release/Malkh_MalkhCore.bundle
+'
+2026-11-16 23:21:37.516 Df ReportCrash[8486:66a15e] Formulating fatal 309 report for corpse[27149] Malkh
+2026-11-16 23:21:37.520 Df ReportCrash[8486:66a15e] loadStoreInfo [platform 1] com.busulbman.malkh from file:///Applications/Malkh.app/
+2026-11-16 23:21:37.536 Df osanalyticshelper[8291:66a41d] (OSAnalytics) creating type 309 as /Users/nurali/Library/Logs/DiagnosticReports/.Malkh-2026-11-16-232137.ips
+2026-11-16 23:21:37.545 Df osanalyticshelper[8291:66a41d] (OSAnalytics) Saved type '309(<private>)' report (10 of max 25) at /Users/nurali/Library/Logs/DiagnosticReports/Malkh-2026-11-16-232137.ips
+2026-11-16 23:21:37.545 Df osanalyticshelper[8291:66a41d] xpc log creation type 309 result success: /Users/nurali/Library/Logs/DiagnosticReports/Malkh-2026-11-16-232137.ips
+2026-11-16 23:21:37.545 Df ReportCrash[8486:66a15e] (OSAnalytics) client log create type 309 result success: /Users/nurali/Library/Logs/DiagnosticReports/Malkh-2026-11-16-232137.ips
+2026-11-16 23:21:37.572 Df ReportCrash[8486:66a15e] recordCrashEvent; isBeta 1, log: '/Users/nurali/Library/Logs/DiagnosticReports/Malkh-2026-11-16-232137.ips'
+2026-11-16 23:21:40.536 Df SubmitDiagInfo[673:66a23c] (OSAnalytics) Retiring (309) submitted '/Users/nurali/Library/Logs/DiagnosticReports/Retired/Malkh-2026-11-16-232137.ips': success
