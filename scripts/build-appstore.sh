@@ -15,7 +15,7 @@ identities=$( { security find-identity -v -p codesigning; security find-identity
 app_identity=$(print -r -- "$identities" | grep -E '"(Apple Distribution|3rd Party Mac Developer Application):' | head -1 | sed -E 's/.*"(.*)"/\1/' || true)
 installer_identity=$(print -r -- "$identities" | grep -E '"(3rd Party Mac Developer Installer|Mac Installer Distribution):' | head -1 | sed -E 's/.*"(.*)"/\1/' || true)
 if [[ -z "$app_identity" || -z "$installer_identity" ]]; then
-  print -u2 "Bu Mac'te bulunan imza sertifikaları:"; print -r -- "$identities" | grep '"' | sort -u >&2
+  print -u2 "Bu Mac'te bulunan imza sertifikaları:"; { print -r -- "$identities" | grep '"' | sort -u >&2; } || print -u2 "   (hiç yok — security find-identity boş döndü)"
 fi
 [[ -n "$app_identity" ]] || { print -u2 "Apple Distribution sertifikası yok. Xcode → Settings → Accounts → Manage Certificates → + → Apple Distribution"; exit 1; }
 [[ -n "$installer_identity" ]] || { print -u2 "Mac Installer Distribution sertifikası yok. Xcode → Settings → Accounts → Manage Certificates → + → Mac Installer Distribution"; exit 1; }
