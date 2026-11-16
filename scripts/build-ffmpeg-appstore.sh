@@ -37,9 +37,10 @@ fi
 print "▸ libogg 1.3.5 + libvorbis 1.3.7 (BSD)"
 if ! built libvorbis.a; then
   fetch https://downloads.xiph.org/releases/ogg/libogg-1.3.5.tar.gz ogg.tar.gz; unpack ogg.tar.gz ogg
-  (cd "$src/ogg" && ./configure --prefix="$prefix" --disable-shared --enable-static && make -j$jobs && make install)
+  (cd "$src/ogg" && ./configure --prefix="$prefix" --build=aarch64-apple-darwin --host=aarch64-apple-darwin --disable-shared --enable-static && make -j$jobs && make install)
   fetch https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.gz vorbis.tar.gz; unpack vorbis.tar.gz vorbis
-  (cd "$src/vorbis" && ./configure --prefix="$prefix" --disable-shared --enable-static --with-ogg="$prefix" && make -j$jobs && make install)
+  # Eski libvorbis, Apple Silicon'da artık tanınmayan -force_cpusubtype_ALL bayrağını ekliyor; temizle.
+  (cd "$src/vorbis" && sed -i '' 's/-force_cpusubtype_ALL//g' configure && ./configure --prefix="$prefix" --build=aarch64-apple-darwin --host=aarch64-apple-darwin --disable-shared --enable-static --disable-examples --with-ogg="$prefix" && make -C lib -j$jobs && make -C lib install && make -C include install && install -m 644 vorbis.pc vorbisenc.pc vorbisfile.pc "$prefix/lib/pkgconfig/")
 fi
 print "▸ libvpx 1.15.0 (VP8/VP9, BSD)"
 if ! built libvpx.a; then
